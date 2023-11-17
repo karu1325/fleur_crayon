@@ -37,3 +37,5 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
+## 実装機能リスト
+https://docs.google.com/spreadsheets/d/1hrUzJeaiQCwc6JY-Up__ezLa6Jfrp5pD3t31xfEHbEg/edit?usp=sharing
