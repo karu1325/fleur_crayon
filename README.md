@@ -28,7 +28,7 @@
 - 手帳やノートに遊び心を加えたいときにどんなグッズがあるかの確認に利用
 ​
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- 実装機能　https://docs.google.com/spreadsheets/d/1hrUzJeaiQCwc6JY-Up__ezLa6Jfrp5pD3t31xfEHbEg/edit?usp=sharing
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -37,5 +37,6 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 ​
-## 実装機能リスト
-https://docs.google.com/spreadsheets/d/1hrUzJeaiQCwc6JY-Up__ezLa6Jfrp5pD3t31xfEHbEg/edit?usp=sharing
+## 使用素材
+- ぱくたそ
+- Font Free
