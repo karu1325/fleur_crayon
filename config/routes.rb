@@ -2,13 +2,25 @@ Rails.application.routes.draw do
 
   root to:"public/homes#top"
   scope module: :public do
-
-
-
+    get 'users' => 'users#show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users' => 'users#update'
+    get 'users/confirm' => 'users#confirm'
+    patch 'users/withdraw' => 'users#withdraw'
+    resources :posts
+    get 'posts/search' => 'posts#search'
+    resources :relationships, only: [:create, :destroy]
+    get 'relationships/followings' => 'relationships#followings'
+    get 'relationships/followers' => 'relationships#followers'
+    resources :bookmarks, only: [:create, :destroy, :index]
+    resources :favorites, only: [:create, :destroy]
+    resources :post_comments, only: [:new, :create, :destroy]
   end
 
   namespace :admin do
-
+    get 'homes/top' => 'homes#top', as: ''
+    resources :post, only: [:show]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
   devise_for :admins, skip: [:registrations, :passwords], controllers: {
