@@ -1,1 +1,27 @@
-<h1>top</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="title">
+        <h2>Fleur Crayon</h2>
+        <p class="text-center">
+          好きな文房具<br>
+          オススメの文房具を<br>
+          共有しよう！
+        </p>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="sign-link">
+        <p>ログインはこちら</p>
+        <%= link_to 'ログイン', new_user_session_path, class:'btn btn-primary' %>
+      </div>
+      <div class="sign-link">
+        <p>新規登録はこちら</p>
+        <%= link_to '新規登録', new_user_registration_path, class:'btn btn-primary' %>
+      </div>
+      <div class="sign-link">
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, class:'btn btn-primary', method: :post %>
+      </div>
+    </div>
+  </div>
+</div>
