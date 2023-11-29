@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+
   def show
   end
 
@@ -6,5 +7,11 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+  end
+
+  def confirm
+  end
+
+  def withdraw
   end
 end

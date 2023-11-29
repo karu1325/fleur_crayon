@@ -27,8 +27,15 @@
     <main>
       <%= yield %>
     </main>
-    <footer>
-
+    <footer class="border-top border-dark">
+      <div class="container">
+        <div class="row no-gutters">
+          <h2 class="title">Fleur Crayon</h2>
+          <div class="footer-item">
+            <%= link_to'退会', users_confirm_path, class:'text-dark' %>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

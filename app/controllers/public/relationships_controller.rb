@@ -4,4 +4,10 @@ class Public::RelationshipsController < ApplicationController
 
   def destroy
   end
+
+  def followings
+  end
+
+  def followers
+  end
 end
