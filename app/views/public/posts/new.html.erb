@@ -23,6 +23,9 @@
         <label for="inputCampany" class="col-2">メーカー名<br>任意</label>
         <%= f.text_field :campany, class:"form-control col-7", id:"inputCampany", placeholder:"メーカー" %>
       </div>
+      <div class="form-group">
+        <%= f.file_field :image, accept: "image/*" %>
+      </div>
       <div class="row form-group">
         <label for="inputCaption" class="col-2">投稿文</label>
         <%= f.text_area :caption, class:"form-control col-7", id:"inputCaption", placeholder:"オススメポイント・使ってみた感想など" %>

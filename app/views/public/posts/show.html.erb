@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    <div class="title">コメント件</div>
+    <%= link_to'編集する', edit_post_path(@post), class:'btn btn-primary' %>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="sidebar border">
+        <ul>
+          <li>
+            <%= link_to'ホーム', users_path %>
+          </li>
+          <li>
+            <%= link_to'フォロー', relationships_followings_path %>
+          </li>
+          <li>
+            <%= link_to'フォロワー', relationships_followers_path %>
+          </li>
+          <li>
+            <%= link_to'ブックマーク', bookmarks_path %>
+          </li>
+          <li>
+            <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+        <%= link_to users_path(@post.user_id) do %>
+          <div class="card-user row">
+            <%= image_tag @post.user.get_profile_image(100,100), class:'rounded-circle' %>
+            <%= @post.user.name %>
+            <%= @post.created_at.strftime("%Y/%m/%d") %>
+          </div>
+          <div class="row">
+            <div class="card-title">
+              <%= @post.name %> / <%= @post.campany %>
+            </div>
+          </div>
+          <p class="card-text">
+            <%= @post.caption %>
+          </p>
+          <%#<div class="card-tag">
+            <%= post.tag_name %>
+          <%#</div>#%>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

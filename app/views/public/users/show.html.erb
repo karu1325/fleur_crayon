@@ -1,2 +1,27 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>user/show</h1>
+    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="sidebar border">
+        <ul>
+          <li>
+            <%= link_to'ホーム', users_path %>
+          </li>
+          <li>
+            <%= link_to'フォロー', relationships_followings_path %>
+          </li>
+          <li>
+            <%= link_to'フォロワー', relationships_followers_path %>
+          </li>
+          <li>
+            <%= link_to'ブックマーク', bookmarks_path %>
+          </li>
+          <li>
+            <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+      </div>
+    </div>
