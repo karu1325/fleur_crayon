@@ -2,11 +2,9 @@ Rails.application.routes.draw do
 
   root to:"public/homes#top"
   scope module: :public do
-    get 'users' => 'users#show'
-    get 'users/information/edit' => 'users#edit'
-    patch 'users' => 'users#update'
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
+    resources :users, only: [:show, :update, :edit]
     resources :posts
     get 'posts/search' => 'posts#search'
     resources :relationships, only: [:create, :destroy]

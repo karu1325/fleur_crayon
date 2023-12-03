@@ -1,2 +1,55 @@
-<h1>Public::Users#edit</h1>
-<p>Find me in app/views/public/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    <h4>ユーザー編集</h4>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="sidebar border">
+        <ul>
+          <li>
+            <%= link_to'ホーム', user_path(current_user.id) %>
+          </li>
+          <li>
+            <%= link_to'フォロー', relationships_followings_path %>
+          </li>
+          <li>
+            <%= link_to'フォロワー', relationships_followers_path %>
+          </li>
+          <li>
+            <%= link_to'ブックマーク', bookmarks_path %>
+          </li>
+          <li>
+            <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <%= form_with model: @user do |f| %>
+            <div class="form-group row">
+              <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle', size:'80x80' %>
+              <div class="col">
+                <label for="inputProfileImage">アイコン</label>
+                <%= f.file_field :profile_image, accept:"image/*", class:"col", id:"inputProfileImage" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputName">ユーザー名</label>
+              <%= f.text_field :name, class:"form-control", id:"inputName" %>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail">メールアドレス</label>
+              <%= f.email_field :email, class:"form-control", id:"inputEmail" %>
+            </div>
+            <div class="button">
+              <%= f.submit'変更を保存', class:"btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

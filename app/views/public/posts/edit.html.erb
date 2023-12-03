@@ -7,7 +7,7 @@
       <div class="sidebar border">
         <ul>
           <li>
-            <%= link_to'ホーム', users_path %>
+            <%= link_to'ホーム', user_path(current_user.id) %>
           </li>
           <li>
             <%= link_to'フォロー', relationships_followings_path %>

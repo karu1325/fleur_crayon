@@ -1,14 +1,33 @@
 <div class="container">
   <div class="row">
-    <h1>user/show</h1>
-    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    <div class="post-link">
+      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    </div>
+    <h2>ホーム</h2>
+    <div class="user-date row align-items-baseline">
+      <div class="user-icon">
+        <%= image_tag @user.get_profile_image(100,100), class:"rounded-circle", size:"50x50" %>
+      </div>
+      <h5 class="user-name">
+        <%= @user.name %>
+      </h5>
+      <% if @user.id == current_user.id %>
+      <div class="edit-link">
+        <%= link_to'ユーザー編集', edit_user_path(current_user.id), class:"btn btn-primary" %>
+      </div>
+      <% else %>
+      <div class="follow">
+        フォローする
+      </div>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <div class="col-3">
       <div class="sidebar border">
         <ul>
           <li>
-            <%= link_to'ホーム', users_path %>
+            <%= link_to'ホーム', user_path(current_user.id) %>
           </li>
           <li>
             <%= link_to'フォロー', relationships_followings_path %>
@@ -25,3 +44,31 @@
         </ul>
       </div>
     </div>
+    <div class="col-8">
+      <div class="card">
+      <% @posts.each do |post| %>
+        <div class="card-body">
+        <%= link_to post_path(post.id) do %>
+          <div class="card-user row">
+            <%= image_tag post.user.get_profile_image(100,100), class:'rounded-circle' %>
+            <%= post.user.name %>
+            <%= post.created_at.strftime("%Y/%m/%d") %>
+          </div>
+          <div class="row">
+            <div class="card-title">
+              <%= post.name %> / <%= post.campany %>
+            </div>
+          </div>
+          <p class="card-text">
+            <%= post.caption %>
+          </p>
+          <%#<div class="card-tag">
+            <%= post.tag_name %>
+          <%#</div>#%>
+        <% end %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
