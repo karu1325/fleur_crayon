@@ -1,26 +1,23 @@
 <div class="container">
-  <div class="row">
-    <div class="col-5">
-      <div class="title">
-        <h2>Fleur Crayon</h2>
-        <p class="text-center">
-          好きな文房具<br>
-          オススメの文房具を<br>
-          共有しよう！
-        </p>
-      </div>
+  <div class="row no-gutters">
+    <div class="site-caption col-5 border rounded-3">
+      <h1 class="site-title text-white bg-danger">Fleur Crayon</h1>
+      <h4 class="site-caption text-center-align">
+        好きな文房具<br>
+        オススメの文房具を<br>
+        共有しよう！</h4>
     </div>
-    <div class="col-6">
+    <div class="col-5 border">
       <div class="sign-link">
-        <p>ログインはこちら</p>
+        <h5 class="border-top">ログインはこちら</h5>
         <%= link_to 'ログイン', new_user_session_path, class:'btn btn-primary' %>
       </div>
       <div class="sign-link">
-        <p>新規登録はこちら</p>
+        <h5>新規登録はこちら</h5>
         <%= link_to '新規登録', new_user_registration_path, class:'btn btn-primary' %>
       </div>
       <div class="sign-link">
-        <P>ゲストログインはこちら</P>
+        <h5>ゲストログインはこちら</h5>
         <%= link_to 'ゲストログイン', users_guest_sign_in_path, class:'btn btn-primary', method: :post %>
       </div>
     </div>

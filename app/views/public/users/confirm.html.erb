@@ -1,2 +1,11 @@
-<h1>Public::Users#confilm</h1>
-<p>Find me in app/views/public/users/update.html.erb</p>
+<div class="container">
+  <h1>Public::Users#confilm</h1>
+  <p>退会します。<br>
+    退会すると投稿、ユーザー情報が消去されます。<br>
+    また、再度当サイトを利用するには新規会員登録が必要になります。<br>
+    退会しますか？</p>
+  <div class="link-button">
+    <%= link_to'退会する', users_withdraw_path, method: :patch, class:'btn btn-danger', data: { confirm: '本当に退会しますか？'} %>
+    <%= link_to'退会しない', user_path(current_user.id), class:'btn btn-success'  %>
+  </div>
+</div>
