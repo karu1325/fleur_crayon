@@ -7,17 +7,21 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tag_lists = Tag.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @tag_lists = @post.tags
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_list = params[:post][:tag_name].split  #splitメソッドで配列に変換
+    @post.create_tags(tag_list)  #create_tagsはpost.rbにメソッドを記載
     @post.save
-    redirect_to users_path(current_user.id)
+    redirect_to user_path(current_user.id)
   end
 
   def edit
@@ -42,6 +46,10 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :campany, :caption, :image, :tag_name)
+    params.require(:post).permit(:name, :campany, :caption, :image)
+  end
+
+  def tag_params
+    params.require(:post).permit(:tag_name)
   end
 end
