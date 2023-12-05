@@ -62,9 +62,9 @@
           <p class="card-text">
             <%= post.caption %>
           </p>
-          <%#<div class="card-tag">
-            <%= post.tag_name %>
-          <%#</div>#%>
+          <div class="card-tag">
+            <%= post.tags.map(&:tag_name).join(' ') %>
+          </div>
         <% end %>
         </div>
       <% end %>

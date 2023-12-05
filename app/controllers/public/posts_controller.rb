@@ -19,19 +19,28 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split  #splitメソッドで配列に変換
-    @post.create_tags(tag_list)  #create_tagsはpost.rbにメソッドを記載
-    @post.save
-    redirect_to user_path(current_user.id)
+    if @post.save
+      @post.create_tags(tag_list)  #create_tagsはpost.rbにメソッドを記載
+      redirect_to user_path(current_user.id)
+    else
+      render:new
+    end
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:tag_name).join(' ') #配列を文字列に変換
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post.id)
+    tag_list = params[:post][:tag_name].split
+    if @post.update(post_params)
+      @post.create_tags(tag_list)
+      redirect_to post_path(@post.id)
+    else
+      render:edit
+    end
   end
 
   def destroy
