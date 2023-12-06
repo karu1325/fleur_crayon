@@ -11,13 +11,13 @@
             <%= link_to'ホーム', user_path(current_user.id) %>
           </li>
           <li>
-            <%= link_to'フォロー', relationships_followings_path %>
+            <%= link_to'フォロー', post_followings_path(current_user) %>
           </li>
           <li>
-            <%= link_to'フォロワー', relationships_followers_path %>
+            <%= link_to'フォロワー', post_followers_path(current_user) %>
           </li>
           <li>
-            <%= link_to'ブックマーク', bookmarks_path %>
+            <%= link_to'ブックマーク', post_bookmarks_path(current_user) %>
           </li>
           <li>
             <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
@@ -48,9 +48,22 @@
                 <%= post.caption %>
               </p>
               <div class="card-tag">
-                <%#<% @tag_lists.each do |tag| %>
-                  <%= post.tags.map(&:tag_name).join(' ') %>
-                <%#<% end %>
+                <%= post.tags.map(&:tag_name).join(' ') %>
+              </div>
+              <div class="favorite-btn">
+                <% if post.favorited_by?(current_user) %>
+                  <p class="post-option">
+                    <%= link_to post_favorites_path(post), method: :delete do %>
+                      ♥<%= post.favorites.count %>いいね
+                    <% end %>
+                  </p>
+                <% else %>
+                  <p class="post-option">
+                    <%= link_to post_favorites_path(post), method: :post do %>
+                      ♡<%= post.favorites.count %>いいね
+                    <% end %>
+                  </p>
+                <% end %>
               </div>
             <% end %>
             </div>

@@ -6,6 +6,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followings
+    
   end
 
   def followers

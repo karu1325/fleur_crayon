@@ -11,13 +11,13 @@
             <%= link_to'ホーム', user_path(current_user.id) %>
           </li>
           <li>
-            <%= link_to'フォロー', relationships_followings_path %>
+            <%= link_to'フォロー', post_followings_path(current_user) %>
           </li>
           <li>
-            <%= link_to'フォロワー', relationships_followers_path %>
+            <%= link_to'フォロワー', post_followers_path(current_user) %>
           </li>
           <li>
-            <%= link_to'ブックマーク', bookmarks_path %>
+            <%= link_to'ブックマーク', post_bookmarks_path(current_user) %>
           </li>
           <li>
             <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>

@@ -35,4 +35,8 @@ class Post < ApplicationRecord
       self.tags << new_post_tag    #登録するpostのtagに紐づける
     end
   end
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id) #userテーブルのidカラムの値がuser.idのレコードが存在するかを確認
+  end
 end

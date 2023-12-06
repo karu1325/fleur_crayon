@@ -17,14 +17,15 @@ Rails.application.routes.draw do
     get 'users/confirm' => 'users#confirm'
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:show, :update, :edit]
-    resources :posts
     get 'posts/search' => 'posts#search'
-    resources :relationships, only: [:create, :destroy]
-    get 'relationships/followings' => 'relationships#followings'
-    get 'relationships/followers' => 'relationships#followers'
-    resources :bookmarks, only: [:create, :destroy, :index]
-    resources :favorites, only: [:create, :destroy]
-    resources :post_comments, only: [:new, :create, :destroy]
+    resources :posts do
+      resources :relationships, only: [:create, :destroy]
+      get 'relationships/followings' => 'relationships#followings', as: 'followings'
+      get 'relationships/followers' => 'relationships#followers', as: 'followers'
+      resource :bookmarks, only: [:create, :destroy, :index]
+      resource :favorites, only: [:create, :destroy]
+      resources :post_comments, only: [:new, :create, :destroy]
+    end
   end
 
   namespace :admin do
