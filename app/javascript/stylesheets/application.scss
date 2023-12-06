@@ -1,1 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
+.profile-icon{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
