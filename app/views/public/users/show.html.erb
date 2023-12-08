@@ -45,47 +45,10 @@
       </div>
     </div>
     <div class="col-8">
-      <div class="card">
-      <% @posts.each do |post| %>
-        <div class="card-body">
-        <%= link_to post_path(post.id) do %>
-          <div class="card-user row">
-            <%= image_tag post.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
-            <%= post.user.name %>
-            <%= post.created_at.strftime("%Y/%m/%d") %>
-          </div>
-          <div class="row">
-            <div class="card-title">
-              <%= post.name %> / <%= post.campany %>
-            </div>
-          </div>
-          <div class="card-image">
-            <%= image_tag post.get_image(200,200) %>
-          </div>
-          <p class="card-text">
-            <%= post.caption %>
-          </p>
-          <div class="card-tag">
-            <%= post.tags.map(&:tag_name).join(' ') %>
-          </div>
-          <div class="favorite-btn">
-            <% if post.favorited_by?(current_user) %>
-              <p class="post-option">
-                <%= link_to post_favorites_path(post), method: :delete do %>
-                  ♥<%= post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% else %>
-              <p class="post-option">
-                <%= link_to post_favorites_path(post), method: :post do %>
-                  ♡<%= post.favorites.count %>いいね
-                <% end %>
-              </p>
-            <% end %>
-          </div>
+      <div class="card-list">
+        <% @posts.each do |post| %>
+          <%= render 'public/posts/post', post: post %>
         <% end %>
-        </div>
-      <% end %>
       </div>
     </div>
   </div>
