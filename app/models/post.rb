@@ -37,6 +37,6 @@ class Post < ApplicationRecord
   end
 
   def favorited_by?(user)
-    favorites.exists?(user_id: user.id) #userテーブルのidカラムの値がuser.idのレコードが存在するかを確認
+    favorites.where(user_id: user.id).exists? #userテーブルのidカラムの値がuser.idのレコードが存在するか,既にブックマークしていないか確認
   end
 end
