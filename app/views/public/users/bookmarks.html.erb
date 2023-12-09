@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h1>post/index</h1>
     <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    <h5 class="title">ブックマーク一覧</h5>
   </div>
   <div class="row">
     <div class="col-3">
@@ -27,10 +27,14 @@
     </div>
     <div class="col-8">
       <div class="card-list">
-        <% @posts.each do |post| %>
-          <%= render 'post', post: post %>
+        <% if @bookmarks.present? %>
+          <% @bookmarks.each do |post| %>
+            <%= render 'post', post: post %>
+          <% end %>
+        <% else %>
+          <p>ブックマークされた投稿はありません</p>
         <% end %>
       </div>
     </div>
   </div>
-</div
+</div>

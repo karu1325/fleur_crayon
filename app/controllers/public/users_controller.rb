@@ -15,6 +15,11 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(@user.id)
   end
 
+  def bookmarks
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id) #post_id内からログイン中ユーザがブックマークしているidを探し取得
+    @bookmarks = Post.find(bookmarks)
+  end
+
   def confirm
   end
 

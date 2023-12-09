@@ -52,6 +52,11 @@ class Public::PostsController < ApplicationController
   def search
   end
 
+  def bookmarks
+    bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id) #post_id内からログイン中ユーザがブックマークしているidを探し取得
+    @bookmarks = Post.find(bookmarks)
+  end
+
   private
 
   def post_params
