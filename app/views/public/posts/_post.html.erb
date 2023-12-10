@@ -20,11 +20,16 @@
       <div class="card-tag">
         <%= post.tags.map(&:tag_name).join(' ') %>
       </div>
+      <% if current_user != post.user %>
       <div class="option-btn row">
         <div id="favorite_button_<%= post.id %>">
           <%= render 'public/favorites/favorite', post: post %>
         </div>
+        <div id="bookmark_button_<%= post.id %>">
+          <%= render 'public/bookmarks/bookmark', post: post %>
+        </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -29,7 +29,7 @@
       <div class="card-list">
         <% if @bookmarks.present? %>
           <% @bookmarks.each do |post| %>
-            <%= render 'post', post: post %>
+            <%= render 'public/posts/post', post: post %>
           <% end %>
         <% else %>
           <p>ブックマークされた投稿はありません</p>

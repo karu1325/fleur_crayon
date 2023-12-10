@@ -1,0 +1,9 @@
+<% if post.bookmarked_by?(current_user) %>
+  <%= link_to post_bookmarks_path(post), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+    <span><i class="fas fa-bookmark"></i></span>ブックマーク
+  <% end %>
+<% else %>
+  <%= link_to post_bookmarks_path(post), method: :post, remote: true, data: {"turbolinks" => false} do %>
+    <span><i class="far fa-bookmark"></i></span>ブックマーク
+  <% end %>
+<% end %>
