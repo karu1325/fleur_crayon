@@ -4,14 +4,30 @@
   </div>
   <div class="row">
     <div class="col-3">
-      
+      <%= render'admin_side' %>
     </div>
     <div class="col-8">
-      <div class="card-list">
+      <table class="table-list">
         <% @posts.each do |post| %>
-        
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">ユーザ名</th>
+              <th scope="col">投稿日</th>
+              <th scope="col">商品名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= image_tag post.user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
+              <td><%= post.user.name %></td>
+              <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
+              <td><%= post.name %></td>
+            </tr>
+          </tbody>
         <% end %>
-      </div>
+        <%= link_to'ログアウト', destroy_admin_session_path, method: :delete %>
+      </table>
     </div>
   </div>
 </div>

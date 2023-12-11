@@ -1,2 +1,14 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="title">投稿詳細</div>
+    <div class="comment">コメント件</div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <%= render'admin/homes/admin_side' %>
+    </div>
+    <div class="col-8">
+      <%= render 'public/posts/post', post: @post %>
+    </div>
+  </div>
+</div>

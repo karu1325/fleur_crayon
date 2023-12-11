@@ -8,25 +8,7 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <div class="sidebar border">
-        <ul>
-          <li>
-            <%= link_to'ホーム', user_path(current_user.id) %>
-          </li>
-          <li>
-            <%= link_to'フォロー', post_followings_path(current_user) %>
-          </li>
-          <li>
-            <%= link_to'フォロワー', post_followers_path(current_user) %>
-          </li>
-          <li>
-            <%= link_to'ブックマーク', bookmarks_users_path %>
-          </li>
-          <li>
-            <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
-          </li>
-        </ul>
-      </div>
+      <%= render'public/users/public_side' %>
     </div>
     <div class="col-8">
       <%= render 'post', post: @post %>

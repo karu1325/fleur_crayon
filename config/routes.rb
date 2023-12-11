@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'homes/top' => 'homes#top', as: ''
+    get 'homes/top' => 'homes#top', as: 'top'
     resources :post, only: [:show]
     resources :users, only: [:index, :show, :edit, :update]
   end

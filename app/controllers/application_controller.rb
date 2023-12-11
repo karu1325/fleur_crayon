@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
     when User
       posts_path
     when Admin
-      admin_posts_path
+      admin_top_path
     end
-
   end
 
   def after_sign_up_path_for(resource)
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::Base
     when :user
       new_user_session_path
     when :admin
-      admin_session_path
+      new_admin_session_path
     end
 
   end

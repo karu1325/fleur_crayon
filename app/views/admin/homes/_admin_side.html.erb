@@ -1,0 +1,13 @@
+<div class="sidebar border">
+  <ul>
+    <li>
+      <%= link_to'ユーザ一覧', admin_users_path %>
+    </li>
+    <li>
+      <%= link_to'投稿一覧', admin_top_path %>
+    </li>
+    <li>
+      <%= link_to'ログアウト', destroy_admin_session_path, method: :delete %>
+    </li>
+  </ul>
+</div>
