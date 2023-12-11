@@ -8,7 +8,6 @@
     </div>
     <div class="col-8">
       <table class="table-list">
-        <% @posts.each do |post| %>
           <thead>
             <tr>
               <th scope="col"></th>
@@ -18,15 +17,15 @@
             </tr>
           </thead>
           <tbody>
+            <% @posts.each do |post| %>
             <tr>
               <td><%= image_tag post.user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
               <td><%= post.user.name %></td>
               <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
               <td><%= post.name %></td>
             </tr>
+            <% end %>
           </tbody>
-        <% end %>
-        <%= link_to'ログアウト', destroy_admin_session_path, method: :delete %>
       </table>
     </div>
   </div>
