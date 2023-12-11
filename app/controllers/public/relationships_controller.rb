@@ -1,4 +1,6 @@
 class Public::RelationshipsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
   end
 
@@ -6,7 +8,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   def followings
-    
+
   end
 
   def followers

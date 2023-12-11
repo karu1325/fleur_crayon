@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="site-caption col-5 border rounded-3">
+    <div class="site-caption col-5 border rounded-3 text-center">
       <h1 class="site-title text-white bg-danger">Fleur Crayon</h1>
-      <h4 class="site-caption text-center-align">
+      <h4 class="site-caption">
         好きな文房具<br>
         オススメの文房具を<br>
         共有しよう！</h4>
@@ -36,7 +36,7 @@
 
       <div class="row">
         <p class="sign-link">新規登録は<%= link_to"こちら", new_user_registration_path %></p>
-        <%= link_to"ゲストログイン", users_guest_sign_in_path %>
+        <%= link_to"ゲストログイン", users_guest_sign_in_path, method: :post %>
       </div>
 
       <%= render "public/shared/links" %>
