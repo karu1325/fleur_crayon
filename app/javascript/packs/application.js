@@ -3,10 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+import Rails from "@rails/ujs";
+import Turbolinks from "turbolinks";
+import * as ActiveStorage from "@rails/activestorage";
+import "channels";
 import "jquery";
 import "popper.js";
 import "bootstrap";
@@ -15,7 +15,29 @@ import "../stylesheets/application";
 //= require jquery
 //= require rails-ujs
 
+import $ from 'jquery';
+$(document).ready(function() {
+  $("tr[data-href]").hover(  //カーソルを合わせたとき
+    function() {
+      $(this).css({
+        "color": "gray",  //文字色を変更
+        "background-color": "lightgray"　//背景色を変更
+      });
+    },
+    function() {
+      $(this).css({  //カーソルを外しているとき
+        "color": "",  //文字色を元に戻す
+        "background-color": ""  //背景色を元に
+      });
+    }
+  );
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+  $("tr[data-href]").click(function() {
+    var url = $(this).data("href");
+    window.location.href = url;
+  });
+});
+
+Rails.start();
+Turbolinks.start();
+ActiveStorage.start();

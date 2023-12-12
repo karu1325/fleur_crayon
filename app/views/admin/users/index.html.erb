@@ -18,12 +18,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr data-href="/admin/users/<%= user.id %>">
               <td><%= image_tag user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
               <td><%= user.name %></td>
               <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
               <td><% if user.is_active %>
-                    <p class="text-success"><strong>有効</strong></p>
+                    <p class="text-success my-auto"><strong>有効</strong></p>
                   <% else %>
                     <p class="text-buted"><strong>退会</strong></p>
                   <% end %>
