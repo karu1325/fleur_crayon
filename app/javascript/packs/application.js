@@ -16,12 +16,12 @@ import "../stylesheets/application";
 //= require rails-ujs
 
 import $ from 'jquery';
-$(document).ready(function() {
-  $("tr[data-href]").hover(  //カーソルを合わせたとき
+$(document).on('turbolinks:load', function() {
+  $('tr[data-href]').hover(  //カーソルを合わせたとき
     function() {
       $(this).css({
         "color": "gray",  //文字色を変更
-        "background-color": "lightgray"　//背景色を変更
+        "background-color": "lightgray" //背景色を変更
       });
     },
     function() {
@@ -32,8 +32,8 @@ $(document).ready(function() {
     }
   );
 
-  $("tr[data-href]").click(function() {
-    var url = $(this).data("href");
+  $('tr[data-href]').click(function() {
+    var url = $(this).data('href');
     window.location.href = url;
   });
 });
