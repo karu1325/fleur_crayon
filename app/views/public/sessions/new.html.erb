@@ -37,6 +37,7 @@
       <div class="row">
         <p class="sign-link">新規登録は<%= link_to"こちら", new_user_registration_path %></p>
         <%= link_to"ゲストログイン", users_guest_sign_in_path, method: :post %>
+        <%= link_to'ログアウト', destroy_user_session_path, method: :delete %>
       </div>
 
       <%= render "public/shared/links" %>

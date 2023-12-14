@@ -4,10 +4,14 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <%= render'public/posts/public_side' %>
+      <%= render'public/users/public_side' %>
     </div>
     <div class="col-8">
-
+      <div class="card">
+        <div class="card-body">
+          <%= render"follow_list", users: @users %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

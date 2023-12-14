@@ -1,0 +1,5 @@
+<div class="card-user row align-items-center">
+  <%= image_tag user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
+  <%= user.name %>
+  <%= user.created_at.strftime("%Y/%m/%d") %>
+</div>

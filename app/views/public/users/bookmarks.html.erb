@@ -5,17 +5,23 @@
   </div>
   <div class="row">
     <div class="col-3">
-      <%= render'post_side' %>
+      <%= render'public/users/public_side' %>
     </div>
     <div class="col-8">
-      <div class="card-list">
-        <% if @bookmarks.present? %>
-          <% @bookmarks.each do |post| %>
-            <%= render 'public/posts/post', post: post %>
-          <% end %>
-        <% else %>
-          <p>ブックマークされた投稿はありません</p>
+      <% if @bookmarks.present? %>
+        <% @bookmarks.each do |post| %>
+          <div class="card">
+            <div class="card-body">
+              <%= link_to post_path(post.id) do %>
+                <%= render'public/posts/post_creater', post: post %>
+                <%= render 'public/posts/post', post: post %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
+      <% else %>
+        <p>ブックマークされた投稿はありません</p>
+      <% end %>
       </div>
     </div>
   </div>

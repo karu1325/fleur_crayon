@@ -15,12 +15,12 @@ Rails.application.routes.draw do
     patch 'users/withdraw' => 'users#withdraw'
     resources :users, only: [:show, :update, :edit] do
       get :bookmarks, on: :collection
+      resource :relationships, only: [:create, :destroy]
+      get 'relationships/followings' => 'relationships#followings', as: 'followings'
+      get 'relationships/followers' => 'relationships#followers', as: 'followers'
     end
     get 'posts/search' => 'posts#search'
     resources :posts do
-      resources :relationships, only: [:create, :destroy]
-      get 'relationships/followings' => 'relationships#followings', as: 'followings'
-      get 'relationships/followers' => 'relationships#followers', as: 'followers'
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:new, :create, :destroy]

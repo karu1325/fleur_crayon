@@ -1,26 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="post-link">
+    <div class="post-link col-2">
       <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     </div>
-    <h2>ホーム</h2>
-    <div class="user-date row align-items-baseline">
-      <div class="user-icon">
-        <%= image_tag @user.get_profile_image(100,100), class:"rounded-circle", size:"50x50" %>
-      </div>
-      <h5 class="user-name">
-        <%= @user.name %>
-      </h5>
+    <% if @user.id == current_user.id %>
+      <h2 class="col-2">ホーム</h2>
+    <% end %>
+    <div class="row align-items-center">
+      <%= render'user_data', user: @user %>
       <% if @user.id == current_user.id %>
       <div class="edit-link">
         <%= link_to'ユーザー編集', edit_user_path(current_user.id), class:"btn btn-success" %>
       </div>
       <% else %>
-        <% if current_user.following?(@user) %>
-          <%= link_to"フォロー外す", user_relationships_path(@user.id), method: :delete %>
-        <% else %>
-          <%= link_to"フォローする", user_relationships_path(@user.id), method: :post %>
-        <% end %>
+        <%= render "public/relationships/follow_button", user: @user %>
       <% end %>
     </div>
   </div>
@@ -29,11 +22,13 @@
       <%= render'public/users/public_side' %>
     </div>
     <div class="col-8">
-      <div class="card-list">
-        <% @posts.each do |post| %>
-          <%= render 'public/posts/post', post: post %>
-        <% end %>
-      </div>
+      <% @posts.each do |post| %>
+        <div class="card">
+          <div class="card-body">
+            <%= render 'public/posts/post', post: post %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

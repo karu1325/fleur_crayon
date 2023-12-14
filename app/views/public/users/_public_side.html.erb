@@ -4,10 +4,10 @@
       <%= link_to'ホーム', user_path(current_user.id) %>
     </li>
     <li>
-      <%= link_to'フォロー', post_followings_path(current_user) %>
+      <%= link_to'フォロー', user_followings_path(current_user) %>
     </li>
     <li>
-      <%= link_to'フォロワー', post_followers_path(current_user) %>
+      <%= link_to'フォロワー', user_followers_path(current_user) %>
     </li>
     <li>
       <%= link_to'ブックマーク', bookmarks_users_path %>

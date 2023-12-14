@@ -1,0 +1,19 @@
+<% if users.exists? %>
+  <% users.each do |user| %>
+    <div class="card">
+      <div class="card-body row align-items-center">
+        <%= image_tag user.get_profile_image(100,100), class:"rounded-circle profile-icon" %>
+        <%= link_to user_path(user.id) do %>
+          <%= user.name %>
+        <% end %>
+        <div><%= user.followings.count %>フォロー</div>
+        <div><%= user.followers.count %>フォロワー</div>
+        <div>
+          <%= render"follow_button", user: user %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
