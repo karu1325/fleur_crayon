@@ -33,6 +33,9 @@
               <%= form_with url: posts_search_path, method: :get do |form| %>
                 <%= form.text_field :keyword, placeholder:"検索" %>
                 <%= form.submit "検索" %>
+
+
+                <%= form.submit "タグ検索" %>
               <% end %>
             </li>
           </ul>

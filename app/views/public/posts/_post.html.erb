@@ -10,7 +10,11 @@
   <%= post.caption %>
 </p>
 <div class="card-tag">
-  <%= post.tags.map(&:tag_name).join(' ') %>
+  <% post.tags.each do |tag| %>
+    <%= link_to posts_search_path(tag_id: tag.id) do %>
+      <%= tag.tag_name %>
+    <% end %>
+  <% end %>
 </div>
 <% if current_user != post.user %>
   <div class="option-btn row">

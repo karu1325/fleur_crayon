@@ -51,8 +51,18 @@ class Public::PostsController < ApplicationController
   end
 
   def search
-    @posts = Post.search(params[:keyword])
-    @keyword = params[:keyword]
+    if params[:keyword].present?
+      @posts = Post.search(params[:keyword])
+      @keyword = params[:keyword]
+    elsif params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id]) #検索されたタグを受け取る
+      @posts = @tag.posts
+      @keyword = @tag.tag_name
+    elsif params[:tag_search].present?
+      @tag = Tag.select("tag_name")
+      tag_search = params[:tag_search]
+      @posts = Tag.find_by(id: tag_search).posts
+    end
   end
 
   def bookmarks
@@ -63,7 +73,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :campany, :caption, :image, :tag_name)
+    params.require(:post).permit(:name, :campany, :caption, :image)
   end
 
 end
