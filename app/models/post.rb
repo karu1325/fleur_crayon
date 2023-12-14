@@ -43,4 +43,12 @@ class Post < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
+
+  def self.search(search)
+    if search != ""
+      Post.where(['name LIKE(?) OR campany LIKE(?) OR caption LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      Post.include(:user).order('created_at DESC') #投稿一覧（昇順）
+    end
+  end
 end
