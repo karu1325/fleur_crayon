@@ -17,8 +17,8 @@ class Public::SearchesController < ApplicationController
       @keyword = @tag.tag_name
     elsif params[:tag_search].present? #selectのタグ検索
       @tag = Tag.select("tag_name")
-      tag_search = params[:tag_search]
-      @posts = Tag.find_by(id: tag_search).posts
+      @keyword = params[:tag_search]
+      @posts = Tag.find_by(tag_name: @keyword).posts
     else
       @posts = []
     end

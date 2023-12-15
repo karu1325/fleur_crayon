@@ -50,21 +50,6 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def search
-    if params[:keyword].present?
-      @posts = Post.search(params[:keyword])
-      @keyword = params[:keyword]
-    elsif params[:tag_id].present?
-      @tag = Tag.find(params[:tag_id]) #検索されたタグを受け取る
-      @posts = @tag.posts
-      @keyword = @tag.tag_name
-    elsif params[:tag_search].present?
-      @tag = Tag.select("tag_name")
-      tag_search = params[:tag_search]
-      @posts = Tag.find_by(id: tag_search).posts
-    end
-  end
-
   def bookmarks
     bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id) #post_id内からログイン中ユーザがブックマークしているidを探し取得
     @bookmarks = Post.find(bookmarks)
