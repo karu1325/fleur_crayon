@@ -30,8 +30,9 @@
               <%= current_user.name %>
             </li>
             <li class="nav-item">
-              <%= form_with url: posts_search_path, method: :get do |form| %>
+              <%= form_with url: search_path, method: :get do |form| %>
                 <%= form.text_field :keyword, placeholder:"検索" %>
+                <%= form.select :range, options_for_select([['投稿','Post'],['ユーザー','User']]) %>
                 <%= form.submit "検索" %>
 
 

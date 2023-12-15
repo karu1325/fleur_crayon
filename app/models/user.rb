@@ -46,4 +46,11 @@ class User < ApplicationRecord
     super && (is_active == true)
   end
 
+  def self.search(search)
+    if search != ""
+      User.where('name LIKE(?)', "%#{search}%")
+    else
+      Post.include(:user).order('created_at DESC')
+    end
+  end
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searches/search'
+  end
   devise_for :admin, skip: [:registrations, :passwords], controllers:{
     sessions: "admin/sessions"
   }
@@ -19,7 +22,8 @@ Rails.application.routes.draw do
       get 'relationships/followings' => 'relationships#followings', as: 'followings'
       get 'relationships/followers' => 'relationships#followers', as: 'followers'
     end
-    get 'posts/search' => 'posts#search'
+    get 'search' => 'searches#search'
+    get 'tag_search' => 'searches#tag_search'
     resources :posts do
       resource :bookmarks, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
