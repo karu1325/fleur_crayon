@@ -23,12 +23,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto align-items-center">
+          <% if current_user %>
             <li class="nav-item">
               <%= image_tag current_user.get_profile_image(100,100), class:"rounded-circle profile-icon" %>
             </li>
             <li class="nav-item">
               <%= current_user.name %>
             </li>
+          <% else %>
+            <li>管理者</li>
+          <% end %>
             <li class="nav-item">
               <%= form_with url: search_path, method: :get do |form| %>
                 <%= form.text_field :keyword, placeholder:"検索" %>

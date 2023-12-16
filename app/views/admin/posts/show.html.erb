@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="title">投稿詳細</div>
-    <div class="comment">コメント件数:</div>
+    <h5 class="title">投稿詳細</h5>
+    <h5 class="comment">コメント<%= @post.post_comments.count %>件</h5>
   </div>
   <div class="row">
     <div class="col-3">
@@ -10,39 +10,44 @@
     <div class="col-8">
       <div class="card">
         <div class="card-body">
-
-            <div class="card-user row">
-              <%= link_to admin_user_path(@post) do %>
-                <%= image_tag @post.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
-                <%= @post.user.name %>
-              <% end %>
-              <%= @post.created_at.strftime("%Y/%m/%d") %>
-            </div>
-            <div class="row">
-              <div class="card-title">
-                <%= @post.name %> / <%= @post.campany %>
-              </div>
-            </div>
-            <div class="card-image">
-              <%= image_tag @post.get_image(200,200) %>
-            </div>
-            <p class="card-text">
-              <%= @post.caption %>
-            </p>
-            <div class="card-tag">
-              <%= @post.tags.map(&:tag_name).join(' ') %>
-            </div>
-            <% if current_user != @post.user %>
-            <div class="option-btn row">
-              <div class="favorite_count">
-                <%= @post.favorites.count %>いいね
-              </div>
-              <div class="bookmark_count">
-                <%= @post.bookmarks.count %>ブックマーク
-              </div>
-            </div>
+          <div class="card-user row">
+            <%= link_to admin_user_path(@post) do %>
+              <%= image_tag @post.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
+              <%= @post.user.name %>
             <% end %>
-
+            <%= @post.created_at.strftime("%Y/%m/%d") %>
+          </div>
+          <div class="row">
+            <div class="card-title">
+              <%= @post.name %> / <%= @post.campany %>
+            </div>
+          </div>
+          <div class="card-image">
+            <%= image_tag @post.get_image(200,200) %>
+          </div>
+          <p class="card-text">
+            <%= @post.caption %>
+          </p>
+          <div class="card-tag">
+            <%= @post.tags.map(&:tag_name).join(' ') %>
+          </div>
+          <% if current_user != @post.user %>
+          <div class="option-btn row">
+            <div class="favorite_count">
+              <%= @post.favorites.count %>いいね
+            </div>
+            <div class="bookmark_count">
+              <%= @post.bookmarks.count %>ブックマーク
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <%= link_to admin_user_path(post_comment.user) do %>
+            <%= render"public/post_comments/post_comment", post_comment: @post.post_comment %>
+          <% end %>
         </div>
       </div>
     </div>

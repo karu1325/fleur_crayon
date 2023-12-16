@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="card-user">
+    <%= image_tag post_comment.user.get_profile_image(100,100) %>
+    <%= post_comment.user.name %>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %>
+  </div>
+</div>
+<div class="row">
+  <div class="card-comment">
+    <%= post_comment.comment %>
+  </div>
+  <div class="delete-btn ml-auto">
+    <% if post_comment.user == current_user %>
+      <%= link_to post_post_comment_path(post_comment.post, post_comment), class: "btn btn-danger rounded-circle", method: :delete do %>
+        <i class="fas fa-eraser"></i>
+      <% end %>
+    <% end %>
+  </div>
+</div>
