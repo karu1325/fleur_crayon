@@ -8,6 +8,14 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :favorite_count, -> {left_join(:favorites)
+    .select('post.*,COUNT(favorites.id) AS favorite_count')
+    .group('posts.id')
+    .order('favorite_count DESC')
+  }
+
   def get_image(width,height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/498417.1.jpg')
