@@ -2,6 +2,11 @@
   <div class="row">
     <h1>post/index</h1>
     <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    <div class="sort-bar">
+      <%= link_to'新着順', posts_path(latest: "true") %>
+      |<%= link_to'古い順', posts_path(old: "true") %>
+      |<%= link_to'いいね順', posts_path(favorite_count: "true") %>
+    </div>
   </div>
   <div class="row">
     <div class="col-3">
