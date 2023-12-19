@@ -1,13 +1,13 @@
 class Public::SearchesController < ApplicationController
   def search
     @range = params[:range]
+    @keywords = params[:keyword].split(/[[:blank:]]+/)
      #キーワード検索（user,post)
     if @range == "Post"
-      @posts = Post.search(params[:keyword])
+      @posts = Post.search(@keywords)
     else
-      @users = User.search(params[:keyword])
+      @users = User.search(@keywords)
     end
-    @keyword = params[:keyword]
   end
 
   def tag_search

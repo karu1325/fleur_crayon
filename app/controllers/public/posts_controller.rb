@@ -28,7 +28,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_name].split  #splitメソッドで配列に変換
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)  #splitメソッドで配列に変換
     if @post.save
       @post.create_tags(tag_list)  #create_tagsはpost.rbにメソッドを記載
       redirect_to user_path(current_user.id)
