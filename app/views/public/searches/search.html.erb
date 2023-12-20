@@ -3,11 +3,6 @@
     <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     <h5><%= @keyword %>の投稿一覧</h5>
   </div>
-  <div class="sort-bar">
-    <%= link_to'新着順', search_path(latest: "true") %>
-    |<%= link_to'古い順', search_path(old: "true") %>
-    |<%= link_to'いいね順', search_path(favorite_count: "true") %>
-  </div>
   <div class="row">
     <div class="col-3">
       <%= render'public/users/public_side' %>

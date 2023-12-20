@@ -1,21 +1,26 @@
 <div class="container">
-  <div class="row">
+  <div class="row align-items-center">
     <div class="post-link col-2">
       <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     </div>
     <% if @user.id == current_user.id %>
-      <h2 class="col-2">ホーム</h2>
+      <h2 class="col">ホーム</h2>
     <% end %>
-    <div class="row align-items-center">
+    <div class="col">
       <%= render'user_data', user: @user %>
-      <% if @user.id == current_user.id %>
-      <div class="edit-link">
-        <%= link_to'ユーザー編集', edit_user_path(current_user.id), class:"btn btn-success" %>
+    </div>
+      <div class="col">
+        <%= @user.followings.count %>フォロー
+        <%= @user.followers.count %>フォロワー
       </div>
+      <% if @user.id == current_user.id %>
+        <div class="edit-link col-2">
+          <%= link_to'ユーザー編集', edit_user_path(current_user.id), class:"btn btn-success" %>
+        </div>
       <% else %>
         <%= render "public/relationships/follow_button", user: @user %>
       <% end %>
-    </div>
+
   </div>
   <div class="row">
     <div class="col-3">

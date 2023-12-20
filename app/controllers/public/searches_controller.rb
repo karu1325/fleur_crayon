@@ -4,13 +4,16 @@ class Public::SearchesController < ApplicationController
     @keyword = params[:keyword]
     split_keyword = params[:keyword].split(/[[:blank:]]+/)
      #キーワード検索（user,post)
+    @posts = []
     if @range == "Post"
       split_keyword.each do |keyword|
-          @posts = Post.search(keyword).order('created_at DESC')
+        @posts << Post.search(keyword).order('created_at DESC')
       end
     else
       @users = User.search(@keyword).order('created_at DESC')
     end
+    @posts = @posts.flatten.uniq
+    #@posts = @posts.sort_by { |post| post.created_at }.reverse
   end
 
   def tag_search
