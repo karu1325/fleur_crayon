@@ -1,12 +1,15 @@
 class Public::SearchesController < ApplicationController
   def search
     @range = params[:range]
-    @keywords = params[:keyword].split(/[[:blank:]]+/)
+    @keyword = params[:keyword]
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
      #キーワード検索（user,post)
     if @range == "Post"
-      @posts = Post.search(@keywords)
+      split_keyword.each do |keyword|
+          @posts = Post.search(keyword).order('created_at DESC')
+      end
     else
-      @users = User.search(@keywords)
+      @users = User.search(@keyword).order('created_at DESC')
     end
   end
 
