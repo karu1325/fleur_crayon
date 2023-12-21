@@ -15,6 +15,12 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :name, presence: true,
+                   length: { minimum: 2, maximum: 30 }
+  validates :email, presence: true
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
