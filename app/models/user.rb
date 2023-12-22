@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数を両方含む必要があります'}
   validates :name, presence: true,
                    length: { minimum: 2, maximum: 30 }
   validates :email, presence: true

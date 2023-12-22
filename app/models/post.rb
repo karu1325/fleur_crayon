@@ -8,6 +8,11 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  validates :name, presence: true,
+                   length: { minimum: 1, maximum: 20 }
+  validates :caption, presence: true,
+                      length: { minimum: 1, maximum: 300 }
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :favorite_count, -> {
