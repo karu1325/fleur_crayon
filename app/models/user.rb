@@ -18,7 +18,7 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数を両方含む必要があります'}
   validates :name, presence: true,
-                   length: { minimum: 2, maximum: 30 }
+                   length: { minimum: 2, maximum: 20 }
   validates :email, presence: true
 
   def self.guest
@@ -45,7 +45,8 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/498417.2.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg',content_type: 'image/jpg')
     end
-    profile_image.variant(resize_to_limit:[width,height]).processed
+    profile_image
+#    profile_image.variant(resize_to_limit:[width,height]).processed
   end
 
   def active_for_authentication?

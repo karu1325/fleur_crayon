@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1>post/index</h1>
+    <h3>投稿一覧</h3>
     <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     <div class="sort-bar">
       <%= link_to'新着順', posts_path(latest: "true") %>
@@ -24,6 +24,7 @@
         </div>
       </div>
       <% end %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

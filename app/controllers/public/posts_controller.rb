@@ -8,13 +8,13 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:latest]
-      @posts = Post.latest
+      @posts = Post.latest.page(params[:page])
     elsif params[:old]
-      @posts = Post.old
+      @posts = Post.old.page(params[:page])
     elsif params[:favorite_count]
-      @posts = Post.favorite_count
+      @posts = Post.favorite_count.page(params[:page])
     else
-      @posts = Post.all
+      @posts = Post.page(params[:page])
     end
     @tag_lists = Tag.all
   end
@@ -33,6 +33,7 @@ class Public::PostsController < ApplicationController
       @post.create_tags(tag_list)  #create_tagsはpost.rbにメソッドを記載
       redirect_to user_path(current_user.id)
     else
+      flash.now[:alert] = "投稿に失敗しました。必須項目を記入してください"
       render:new
     end
   end
@@ -47,8 +48,10 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split
     if @post.update(post_params)
       @post.create_tags(tag_list)
+      flash[:notice] = "投稿を編集しました"
       redirect_to post_path(@post.id)
     else
+      flash.now[:notice] = "必須項目を入力してください"
       render:edit
     end
   end
@@ -56,6 +59,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to posts_path
   end
 
