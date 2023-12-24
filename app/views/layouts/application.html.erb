@@ -40,7 +40,7 @@
                 <%= form.submit "検索" %>
               <% end %>
               <%= form_with url: tag_search_path, method: :get do |form| %>
-                <%= form.collection_select :tag_search, Tag.all, :tag_name, :tag_name, options = { include_blank: "タグ" }  %>
+                <%= form.collection_select :tag_search, Tag.all, :tag_name, :tag_name, options = { include_blank: "タグ選択", disabled: true }  %>
                 <%= form.submit "タグ検索" %>
               <% end %>
             </li>

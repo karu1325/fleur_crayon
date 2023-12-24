@@ -12,7 +12,8 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    @user.attributes = user_params
+    if @user.save!(context: :update)
       flash[:notice] = "更新しました"
       redirect_to user_path(@user.id)
     else
