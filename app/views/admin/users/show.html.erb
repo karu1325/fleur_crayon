@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <h3>ユーザー詳細</h3>
-    <%= link_to"編集する", edit_admin_user_path, class:"btn btn-primary" %>
+    <%= link_to"編集する", edit_admin_user_path, class:"btn btn-success" %>
   </div>
   <div class="row">
     <div class="col-3">
@@ -35,7 +35,7 @@
                 <th scope="col">メーカー</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="border p-3">
               <% @posts.each do |post| %>
               <tr data-href="/admin/posts/<%= post.id %>">
                 <td><%= post.created_at.strftime("%Y/%m/%d") %></td>

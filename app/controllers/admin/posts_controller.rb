@@ -1,9 +1,5 @@
 class Admin::PostsController < ApplicationController
-  
-
-  def index
-    @posts = Post.all
-  end
+  before_action :authenticate_admin!
 
   def show
     @post = Post.find(params[:id])

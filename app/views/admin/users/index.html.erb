@@ -6,32 +6,33 @@
     <div class="col-3">
       <%= render'admin/homes/admin_side' %>
     </div>
-    <div class="col-8">
+    <div class="col-9">
       <table class="table-list">
-        <% @users.each do |user| %>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">ユーザ名</th>
-              <th scope="col">登録日</th>
-              <th scope="col">ステータス</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-href="/admin/users/<%= user.id %>">
-              <td><%= image_tag user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
-              <td><%= user.name %></td>
-              <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
-              <td><% if user.is_active %>
-                    <p class="text-success my-auto"><strong>有効</strong></p>
-                  <% else %>
-                    <p class="text-buted"><strong>退会</strong></p>
-                  <% end %>
-              </td>
-            </tr>
-          </tbody>
-        <% end %>
+        <thead>
+          <tr>
+            <th scope="col" class="col-3"></th>
+            <th scope="col" class="col-3">ユーザ名</th>
+            <th scope="col" class="col-4">登録日</th>
+            <th scope="col" class="col-3">ステータス</th>
+          </tr>
+        </thead>
+      <% @users.each do |user| %>
+        <tbody class="border">
+          <tr data-href="/admin/users/<%= user.id %>">
+            <td><%= image_tag user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
+            <td><%= user.name %></td>
+            <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
+            <td><% if user.is_active %>
+                  <p class="text-success my-auto"><strong>有効</strong></p>
+                <% else %>
+                  <p class="text-buted"><strong>退会</strong></p>
+                <% end %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
       </table>
+      <%= paginate @users %>
     </div>
   </div>
 </div>

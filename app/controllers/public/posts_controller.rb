@@ -8,13 +8,13 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:latest]
-      @posts = Post.latest.page(params[:page])
+      @posts = Post.latest.page(params[:page]).per(10)
     elsif params[:old]
-      @posts = Post.old.page(params[:page])
+      @posts = Post.old.page(params[:page]).per(10)
     elsif params[:favorite_count]
-      @posts = Post.favorite_count.page(params[:page])
+      @posts = Post.favorite_count.page(params[:page]).per(10)
     else
-      @posts = Post.page(params[:page])
+      @posts = Post.page(params[:page]).per(10)
     end
     @tag_lists = Tag.all
   end
