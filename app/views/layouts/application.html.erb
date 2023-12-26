@@ -15,14 +15,19 @@
     <header class="border-bottom border-dark">
       <nav class="navbar navbar-expand-md navbar-light">
       <div class="container">
-        <a class="navbar-brand p-3" href="/posts">Fleur Crayon</a>
+        <div class="row my-auto">
+        <% if current_user %>
+          <h1 class="navbar-brand px-3" href="/posts">Fleur Crayon</h1>
+        <% else %>
+          <h1 class="navbar-brand p-3 m-0">Fleur Crayon</h1>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto align-items-center">
+          <ul class="navbar-nav align-items-center ">
           <% if current_user %>
             <li class="nav-item">
               <%= image_tag current_user.get_profile_image(100,100), class:"rounded-circle profile-icon" %>
@@ -30,9 +35,6 @@
             <li class="nav-item">
               <%= current_user.name %>
             </li>
-          <% else %>
-            <li>管理者</li>
-          <% end %>
             <li class="nav-item">
               <%= form_with url: search_path, method: :get do |form| %>
                 <%= form.text_field :keyword, placeholder:"検索" %>
@@ -44,12 +46,16 @@
                 <%= form.submit "タグ検索" %>
               <% end %>
             </li>
+          <% else %>
+            <li>管理者</li>
+          <% end %>
           </ul>
+        </div>
         </div>
       </div>
       </nav>
     </header>
-    <main>
+    <main class="flex-grow-1">
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>">
           <%= message %>
@@ -60,7 +66,7 @@
     <footer class="border-top border-dark">
       <div class="container">
         <div class="row no-gutters">
-          <h2 class="title">Fleur Crayon</h2>
+          <h2 class="title mt-1 mb-5">Fleur Crayon</h2>
           <div class="footer-item">
             <%= link_to'退会', users_confirm_path, class:'text-dark' %>
           </div>
