@@ -1,12 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 
-html{
-  height: 100%;
-}
-
-body{
-  height: 100%;
-}
 .profile-icon{
   width: 60px;
   height: 60px;
@@ -15,4 +8,16 @@ body{
 
 li{
   list-style: none;
+}
+
+header{
+  background: #FFDEAD;
+}
+
+.main{
+  background: linear-gradient(-225deg, #FFFFAA 15%, #FF69A3 100%);
+}
+
+footer{
+  background: #D2691E;
 }

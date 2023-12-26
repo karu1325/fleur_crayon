@@ -3,26 +3,30 @@
     <%= post.name %> / <%= post.campany %>
   </h5>
 </div>
-<div class="card-image">
-  <%= image_tag post.get_image(200,200) %>
-</div>
-<p class="card-text">
-  <%= post.caption %>
-</p>
-<div class="card-tag">
-  <% post.tags.each do |tag| %>
-    <%= link_to tag_search_path(tag_id: tag.id) do %>
-      <%= tag.tag_name %>
-    <% end %>
+<div class="row">
+  <div class="card-image">
+    <%= image_tag post.get_image(200,200) %>
+  </div>
+  <div class="col-6">
+    <p class="card-text">
+      <%= truncate(post.caption, :length => 30) %>
+    </p>
+    <div class="card-tag pt-5">
+      <% post.tags.each do |tag| %>
+        <%= link_to tag_search_path(tag_id: tag.id) do %>
+          <%= tag.tag_name %>
+        <% end %>
+      <% end %>
+    </div>
+  <% if current_user != post.user %>
+    <div class="option-btn row">
+      <div id="favorite_button_<%= post.id %>">
+        <%= render 'public/favorites/favorite', post: post %>
+      </div>
+      <div id="bookmark_button_<%= post.id %>">
+        <%= render 'public/bookmarks/bookmark', post: post %>
+      </div>
+    </div>
   <% end %>
-</div>
-<% if current_user != post.user %>
-  <div class="option-btn row">
-  <div id="favorite_button_<%= post.id %>">
-    <%= render 'public/favorites/favorite', post: post %>
-  </div>
-  <div id="bookmark_button_<%= post.id %>">
-    <%= render 'public/bookmarks/bookmark', post: post %>
   </div>
 </div>
-<% end %>

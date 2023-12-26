@@ -14,20 +14,19 @@
   <body class="d-flex flex-column vh-100">
     <header class="border-bottom border-dark">
       <nav class="navbar navbar-expand-md navbar-light">
-      <div class="container">
-        <div class="row my-auto">
-        <% if current_user %>
-          <h1 class="navbar-brand px-3" href="/posts">Fleur Crayon</h1>
+      <div class="container-fluid">
+        <% if user_signed_in? %>
+          <a class="navbar-brand px-3" href="/posts">Fleur Crayon</a>
         <% else %>
-          <h1 class="navbar-brand p-3 m-0">Fleur Crayon</h1>
+          <a class="navbar-brand p-3">Fleur Crayon</a>
         <% end %>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
+        <button class="navbar-toggler bg-white" type="button" data-toggle="collapse"
         data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav align-items-center ">
+          <ul class="navbar-nav align-items-center ml-auto">
           <% if current_user %>
             <li class="nav-item">
               <%= image_tag current_user.get_profile_image(100,100), class:"rounded-circle profile-icon" %>
@@ -51,11 +50,10 @@
           <% end %>
           </ul>
         </div>
-        </div>
       </div>
       </nav>
     </header>
-    <main class="flex-grow-1">
+    <main class="main flex-grow-1">
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>">
           <%= message %>
@@ -66,7 +64,7 @@
     <footer class="border-top border-dark">
       <div class="container">
         <div class="row no-gutters">
-          <h2 class="title mt-1 mb-5">Fleur Crayon</h2>
+          <h2 class="title mt-1 mb-5 text-white">Fleur Crayon</h2>
           <div class="footer-item">
             <%= link_to'退会', users_confirm_path, class:'text-dark' %>
           </div>
