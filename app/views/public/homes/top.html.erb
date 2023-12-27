@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-5 card rounded-3">
-      <h1 class="card-title text-white bg-danger">Fleur Crayon</h1>
-      <h4 class="card-body text-center-align">
+    <div class="col-5 card rounded-3 mx-auto text-center">
+      <h1 class="card-title py-4 text-white bg-danger">Fleur Crayon</h1>
+      <h4 class="card-body py-5">
         好きな文房具<br>
         オススメの文房具を<br>
         共有しよう！</h4>
     </div>
-    <div class="col-5 border">
-      <div class="sign-link">
-        <h5 class="border-top">ログインはこちら</h5>
+    <div class="col-5 card rounded-5 bg-white mx-auto py-5">
+      <div class="card-link pt-3 border-top border-5 text-center">
+        <h5>ログインはこちら</h5>
         <%= link_to 'ログイン', new_user_session_path, class:'btn btn-primary' %>
       </div>
-      <div class="sign-link">
+      <div class="card-link text-center pt-3 ml-0">
         <h5>新規登録はこちら</h5>
         <%= link_to '新規登録', new_user_registration_path, class:'btn btn-primary' %>
       </div>
-      <div class="sign-link">
+      <div class="card-link text-center py-3 border-bottom ml-0">
         <h5>ゲストログインはこちら</h5>
         <%= link_to 'ゲストログイン', users_guest_sign_in_path, class:'btn btn-primary', method: :post %>
       </div>
