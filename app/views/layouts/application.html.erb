@@ -28,10 +28,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav align-items-center ml-auto">
           <% if current_user %>
-            <li class="nav-item">
+            <li class="nav-item mr-2">
               <%= image_tag current_user.get_profile_image(100,100), class:"rounded-circle profile-icon" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mr-4">
               <%= current_user.name %>
             </li>
             <li class="nav-item">
@@ -61,12 +61,12 @@
       <% end %>
       <%= yield %>
     </main>
-    <footer class="border-top border-dark">
+    <footer class="border-top border-light">
       <div class="container">
         <div class="row no-gutters">
           <h2 class="title mt-1 mb-5 text-white">Fleur Crayon</h2>
-          <div class="footer-item">
-            <%= link_to'退会', users_confirm_path, class:'text-dark' %>
+          <div class="footer-item ml-auto my-auto">
+            <strong><%= link_to'退会', users_confirm_path, class:'text-white text-decoration-none' %></strong>
           </div>
         </div>
       </div>

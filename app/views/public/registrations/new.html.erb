@@ -1,46 +1,43 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="site-caption col-5 border rounded-3">
-      <h1 class="site-title text-white bg-danger">Fleur Crayon</h1>
-      <h4 class="site-caption text-center-align">
-        好きな文房具<br>
-        オススメの文房具を<br>
-        共有しよう！</h4>
-    </div>
-    <div class="col-5">
+    <%= render 'public/homes/about' %>
+    <div class="col-5 card rounded-5 bg-white mx-auto">
+      <div class="card-body">
       <%= form_with model: @user, url: user_registration_path, id:'new_user', class:'new_user' do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
-      <div class="sign-form border">
-        <h5 class="border-bottom">新規登録</h5>
+        <h5 class="border-bottom"><strong>新規登録</strong></h5>
+
           <div class="field">
-            <label for="inputName">ユーザー名</label><br>
-            <%= f.text_field :name, id:"inputName", placeholder:"ユーザー"  %>
+            <label for="inputName">ユーザー名(2~20字以内)</label><br>
+            <%= f.text_field :name, id:"inputName", placeholder:"ユーザー名", class:"col-10" %>
           </div>
 
           <div class="field">
             <label for="inputEmail">メールアドレス</label><br />
-            <%= f.email_field :email,　id:"inputEmail", placeholder:"sample@mail.com", autocomplete: "email" %>
+            <%= f.email_field :email,　id:"inputEmail", placeholder:"sample@mail.com", autocomplete: "email", class:"col-10" %>
           </div>
 
           <div class="field">
             <%= f.label :password %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(英数字含む<%= @minimum_password_length %>文字以上)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード", class:"col-10" %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード", class:"col-10" %>
           </div>
-
-          <div class="actions">
+        <div class="row mt-3">
+          <div class="btn py-0">
             <%= f.submit "会員登録", class:"btn btn-primary" %>
           </div>
+          <div class="btn ml-auto">
+            会員の方は<%= link_to'こちら', new_user_session_path %>
+          </div>
+        </div>
       <% end %>
-      <%= link_to'ログイン', new_user_session_path, class:'btn btn-primary' %>
     </div>
   </div>
-<%= render "public/shared/links" %>
 </div>

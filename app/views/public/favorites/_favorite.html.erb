@@ -1,9 +1,9 @@
 <% if post.favorited_by?(current_user) %>
-  <%= link_to post_favorites_path(post), method: :delete, remote: true, data: {"turbolinks" => false} do %>
+  <%= link_to post_favorites_path(post), method: :delete, remote: true, class:"text-decoration-none", data: {"turbolinks" => false} do %>
     ♥<%= post.favorites.count %>いいね
   <% end %>
 <% else %>
-  <%= link_to post_favorites_path(post), method: :post, remote: true, data: {"turbolinks" => false} do %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true, class:"text-decoration-none", data: {"turbolinks" => false} do %>
     ♡<%= post.favorites.count %>いいね
   <% end %>
 <% end %>

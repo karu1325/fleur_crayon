@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list = params[:post][:tag_name].split
+    tag_list = params[:post][:tag_name].split(/[[:blank:]]+/)
     if @post.update(post_params)
       @post.create_tags(tag_list)
       flash[:notice] = "投稿を編集しました"

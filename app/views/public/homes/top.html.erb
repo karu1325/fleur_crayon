@@ -1,13 +1,7 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="col-5 card rounded-3 mx-auto text-center">
-      <h1 class="card-title py-4 text-white bg-danger">Fleur Crayon</h1>
-      <h4 class="card-body py-5">
-        好きな文房具<br>
-        オススメの文房具を<br>
-        共有しよう！</h4>
-    </div>
-    <div class="col-5 card rounded-5 bg-white mx-auto py-5">
+    <%= render 'about' %>
+    <div class="col-5 card rounded-5 bg-white mx-auto py-4">
       <div class="card-link pt-3 border-top border-5 text-center">
         <h5>ログインはこちら</h5>
         <%= link_to 'ログイン', new_user_session_path, class:'btn btn-primary' %>

@@ -1,32 +1,35 @@
 <div class="container-fluid">
   <div class="row my-2">
-    <h3 class="col-4 text-center"><strong>投稿一覧</strong></h3>
-    <div class="col-2">
-      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
-    </div>
-    <div class="sort-bar h5 col-4 my-auto">
+    <h3 class="col-md-3 col-sm-5 text-center mx-5"><strong>投稿一覧</strong></h3>
+    <div class="sort-bar h5 col-md-4 col-sm-7 text-center">
       <%= link_to'新着順', posts_path(latest: "true"), class:"text-dark" %>
       |<%= link_to'古い順', posts_path(old: "true"), class:"text-dark" %>
       |<%= link_to'いいね順', posts_path(favorite_count: "true"), class:"text-dark" %>
     </div>
+    <div class="col-md-2 col-sm-3 ml-auto">
+      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    </div>
   </div>
+  
   <div class="row justify-content-center">
-    <div class="col-2 mx-5 p-0">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
     </div>
 
-    <div class="col-7">
-      <% @posts.each do |post| %>
-      <div class="card mb-4">
-        <div class="card-body">
-          <%= link_to post_path(post.id) do %>
-            <%= render 'post_creater', post: post %>
-            <%= render 'post', post: post %>
-          <% end %>
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-md-11 col-sm-9 mx-auto">
+        <% @posts.each do |post| %>
+        <div class="card mb-4 p-2">
+          <div class="card-body ml-3">
+            <%= link_to post_path(post.id), class:"text-decoration-none" do %>
+              <%= render 'post_creater', post: post %>
+              <%= render 'post', post: post %>
+            <% end %>
+          </div>
         </div>
+        <% end %>
+        <%= paginate @posts %>
       </div>
-      <% end %>
-      <%= paginate @posts %>
     </div>
   </div>
 </div>

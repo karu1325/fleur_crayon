@@ -7,23 +7,23 @@
   <div class="card-image">
     <%= image_tag post.get_image(200,200) %>
   </div>
-  <div class="col-6">
+  <div class="col-md-6 col-sm-10">
     <p class="card-text">
-      <%= truncate(post.caption, :length => 30) %>
+      <%= truncate(post.caption, :length => 50) %>
     </p>
-    <div class="card-tag pt-5">
+    <div class="card-tag pt-3">
       <% post.tags.each do |tag| %>
-        <%= link_to tag_search_path(tag_id: tag.id) do %>
+        <%= link_to tag_search_path(tag_id: tag.id), class:"text-decoration-none" do %>
           <%= tag.tag_name %>
         <% end %>
       <% end %>
     </div>
   <% if current_user != post.user %>
-    <div class="option-btn row">
-      <div id="favorite_button_<%= post.id %>">
+    <div class="card-btn row">
+      <div id="favorite_button_<%= post.id %>" class="m-2">
         <%= render 'public/favorites/favorite', post: post %>
       </div>
-      <div id="bookmark_button_<%= post.id %>">
+      <div id="bookmark_button_<%= post.id %>" class="m-2">
         <%= render 'public/bookmarks/bookmark', post: post %>
       </div>
     </div>

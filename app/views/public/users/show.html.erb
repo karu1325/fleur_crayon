@@ -1,41 +1,44 @@
-<div class="container">
-  <div class="row align-items-center">
-    <div class="post-link col-2">
-      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
-    </div>
+<div class="container-fluid">
+  <div class="row my-2 align-items-center">
     <% if @user.id == current_user.id %>
-      <h2 class="col">ホーム</h2>
+      <h3 class="col-md-2 col-sm-2 ml-5"><strong>ホーム</strong></h3>
     <% end %>
-    <div class="col">
+    <div class="col-md-2 col-sm-4">
       <%= render'user_data', user: @user %>
     </div>
-      <div class="col">
-        <%= @user.followings.count %>フォロー
-        <%= @user.followers.count %>フォロワー
+      <div class="h5 col-md-3 col-sm-4 text-center">
+        <strong><%= @user.followings.count %></strong>フォロー
+        <strong><%= @user.followers.count %></strong>フォロワー
       </div>
       <% if @user.id == current_user.id %>
-        <div class="edit-link col-2">
+        <div class="col-md-2 col-sm-3 ml-4">
           <%= link_to'ユーザー編集', edit_user_path(current_user.id), class:"btn btn-success" %>
         </div>
       <% else %>
         <%= render "public/relationships/follow_button", user: @user %>
       <% end %>
-
+    <div class="col-md-2 col-sm-3 ml-auto">
+      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
     </div>
-    <div class="col-8">
-      <% @posts.each do |post| %>
-        <div class="card">
-          <div class="card-body">
-            <%= link_to post_path(post.id) do %>
-              <%= render 'public/posts/post', post: post %>
-            <% end %>
+
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-md-11 col-sm-9 mx-auto">
+        <% @posts.each do |post| %>
+          <div class="card mb-4 p-2">
+            <div class="card-body ml-3">
+              <%= link_to post_path(post.id) do %>
+                <%= render 'public/posts/post', post: post %>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

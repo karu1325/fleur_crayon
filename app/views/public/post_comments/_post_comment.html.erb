@@ -1,12 +1,17 @@
-<div class="row">
-  <div class="card-user">
-    <%= image_tag post_comment.user.get_profile_image(100,100) %>
+<div class="card-user row align-items-center">
+  <div class="mr-2">
+    <%= image_tag post_comment.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
+  </div>
+  <div class="mr-4">
     <%= post_comment.user.name %>
+  </div>
+  <div class="ml-auto">
     <%= post_comment.created_at.strftime('%Y/%m/%d') %>
   </div>
 </div>
+
 <div class="row">
-  <div class="card-comment">
+  <div class="card-comment mt-2">
     <%= post_comment.comment %>
   </div>
   <div class="delete-btn ml-auto">
