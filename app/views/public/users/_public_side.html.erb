@@ -1,19 +1,19 @@
 <div class="sidebar border bg-white py-3">
   <ul>
     <li>
-      <p class="h5 mt-4 mb-3"><%= link_to'ホーム', user_path(current_user.id) %></p>
+      <p class="h5 mt-4 mb-3"><%= link_to'ホーム', user_path(current_user.id), class:"text-decoration-none" %></p>
     </li>
     <li>
-      <p class="h5 mb-3"><%= link_to'フォロー', user_followings_path(current_user) %></p>
+      <p class="h5 mb-3"><%= link_to'フォロー', user_followings_path(current_user), class:"text-decoration-none" %></p>
     </li>
     <li>
-      <p class="h5 mb-3"><%= link_to'フォロワー', user_followers_path(current_user) %></p>
+      <p class="h5 mb-3"><%= link_to'フォロワー', user_followers_path(current_user), class:"text-decoration-none" %></p>
     </li>
     <li>
-      <p class="h5 mb-3"><%= link_to'ブックマーク', bookmarks_users_path %></p>
+      <p class="h5 mb-3"><%= link_to'ブックマーク', bookmarks_users_path,class:"text-decoration-none" %></p>
     </li>
     <li>
-      <p class="h5 mb-3"><%= link_to'ログアウト', destroy_user_session_path, method: :delete %></p>
+      <p class="h5 mb-3"><%= link_to'ログアウト', destroy_user_session_path, method: :delete, class:"text-decoration-none" %></p>
     </li>
   </ul>
 </div>

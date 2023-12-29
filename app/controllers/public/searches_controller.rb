@@ -8,11 +8,11 @@ class Public::SearchesController < ApplicationController
     @users =[]
     if @range == "Post"
       split_keyword.each do |keyword|
-        @posts << Post.search(keyword).order('created_at DESC')
+        @posts << Post.search(keyword).order('created_at DESC').page(params[:page]).per(10)
       end
     else
       split_keyword.each do |keyword|
-        @users << User.search(keyword).order('created_at DESC')
+        @users << User.search(keyword).order('created_at DESC').page(params[:page]).per(10)
       end
     end
     @posts = @posts.flatten.uniq
@@ -23,12 +23,12 @@ class Public::SearchesController < ApplicationController
   def tag_search
     if params[:tag_id].present? #タグのlinkから検索
       @tag = Tag.find(params[:tag_id]) #検索されたタグを受け取る
-      @posts = @tag.posts
+      @posts = @tag.posts.page(params[:page]).per(10)
       @keyword = @tag.tag_name
     elsif params[:tag_search].present? #selectのタグ検索
       @tag = Tag.select("tag_name")
       @keyword = params[:tag_search]
-      @posts = Tag.find_by(tag_name: @keyword).posts
+      @posts = Tag.find_by(tag_name: @keyword).posts.page(params[:page]).per(10)
     else
       @posts = []
     end

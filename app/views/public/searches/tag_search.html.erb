@@ -1,19 +1,23 @@
-<div class="container">
-  <div class="row">
-    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
-    <h5>"<%= @keyword %>" の投稿一覧</h5>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-7 col-sm-7 text-right mx-5"><strong>"<%= @keyword %>"</strong>の検索結果</h3>
+    <div class="col-md-2 col-sm-3 ml-auto">
+      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
     </div>
 
-    <div class="col-8">
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-md-11 col-sm-9 mx-auto">
       <% if @posts.present? %>
         <% @posts.each do |post| %>
-        <div class="card">
-          <div class="card-body">
-            <%= link_to post_path(post.id) do %>
+        <div class="card mb-4 p-2">
+          <div class="card-body ml-3">
+            <%= link_to post_path(post.id), class:"text-decoration-none" do %>
               <%= render 'public/posts/post_creater', post: post %>
               <%= render 'public/posts/post', post: post %>
             <% end %>
@@ -21,7 +25,9 @@
         </div>
         <% end %>
       <% else %>
-        <p>検索結果はありません</p>
+        <div class="card mb-4 p-2">
+          <div class="card-body ml-3">検索結果はありません</div>
+        </div>
       <% end %>
     </div>
   </div>
