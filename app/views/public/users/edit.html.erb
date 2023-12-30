@@ -1,35 +1,41 @@
-<div class="container">
-  <div class="row">
-    <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
-    <h4>ユーザー編集</h4>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-3 col-sm-5 text-center mx-5"><strong>ユーザー編集</strong></h3>
+    <div class="col-md-2 col-sm-3 ml-auto">
+      <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
+    </div>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
     </div>
-    <div class="col-8">
-      <div class="card">
-        <div class="card-body">
-          <%= form_with model: @user do |f| %>
-            <div class="form-group row">
-              <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle', size:'80x80' %>
-              <div class="col">
-                <label for="inputProfileImage">アイコン</label>
-                <%= f.file_field :profile_image, accept:"image/*", class:"col", id:"inputProfileImage" %>
+
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-md-11 col-sm-9 mx-auto">
+        <div class="card mb-4 p-2">
+          <div class="card-body mx-3">
+            <%= form_with model: @user do |f| %>
+              <div class="row form-group my-4">
+                <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle', size:'80x80' %>
+                <div class="col">
+                  <label for="inputProfileImage" class="col-md-7">アイコン</label>
+                  <%= f.file_field :profile_image, accept:"image/*", class:"col-md-12", id:"inputProfileImage" %>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName">ユーザー名</label>
-              <%= f.text_field :name, class:"form-control", id:"inputName" %>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail">メールアドレス</label>
-              <%= f.email_field :email, class:"form-control", id:"inputEmail" %>
-            </div>
-            <div class="button">
-              <%= f.submit'変更を保存', class:"btn btn-primary" %>
-            </div>
-          <% end %>
+              <div class="row form-group">
+                <label for="inputName" class="col-md-3">ユーザー名</label>
+                <%= f.text_field :name, class:"form-control col-md-7", id:"inputName" %>
+              </div>
+              <div class="row form-group">
+                <label for="inputEmail" class="col-md-3">メールアドレス</label>
+                <%= f.email_field :email, class:"form-control col-md-7", id:"inputEmail" %>
+              </div>
+              <div class="button">
+                <%= f.submit'変更を保存', class:"btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

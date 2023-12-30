@@ -1,23 +1,25 @@
-<div class="container">
-  <div class="row">
-    <div class="title">ユーザー一覧</div>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-3 col-sm-5 text-center mx-5"><strong>ユーザー一覧</strong></h3>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'admin/homes/admin_side' %>
     </div>
-    <div class="col-9">
-      <table class="table-list">
+
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <table class="col-md-11 col-sm-9 mx-auto mb-3">
         <thead>
           <tr>
-            <th scope="col" class="col-3"></th>
-            <th scope="col" class="col-3">ユーザ名</th>
-            <th scope="col" class="col-4">登録日</th>
-            <th scope="col" class="col-3">ステータス</th>
+            <th scope="col"></th>
+            <th scope="col">ユーザ名</th>
+            <th scope="col">登録日</th>
+            <th scope="col">ステータス</th>
           </tr>
         </thead>
       <% @users.each do |user| %>
-        <tbody class="border">
+        <tbody class="border bg-white">
           <tr data-href="/admin/users/<%= user.id %>">
             <td><%= image_tag user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
             <td><%= user.name %></td>
@@ -32,7 +34,7 @@
         </tbody>
       <% end %>
       </table>
-      <%= paginate @users %>
+      <div class="row justify-content-center"><%= paginate @users %></div>
     </div>
   </div>
 </div>

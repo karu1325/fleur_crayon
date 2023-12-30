@@ -1,13 +1,15 @@
-<div class="container">
-  <div class="row">
-    <h1>投稿一覧</h1>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-3 col-sm-5 text-center mx-5"><strong>投稿一覧</strong></h3>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'admin_side' %>
     </div>
-    <div class="col-8">
-      <table class="table-list">
+
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <table class="col-md-11 col-sm-9 mx-auto mb-3">
           <thead>
             <tr>
               <th scope="col"></th>
@@ -16,9 +18,9 @@
               <th scope="col">商品名</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="border bg-white">
             <% @posts.each do |post| %>
-            <tr data-href="/admin/posts/<%= post.id %>">
+            <tr class="border-bottom" data-href="/admin/posts/<%= post.id %>">
               <td><%= image_tag post.user.get_profile_image(100,100), class:"rounded-circle profile-icon" %></td>
               <td><%= post.user.name %></td>
               <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
@@ -27,6 +29,7 @@
             <% end %>
           </tbody>
       </table>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

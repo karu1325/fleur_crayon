@@ -1,32 +1,25 @@
 <div class="container">
   <div class="row no-gutters">
-    <div class="site-caption col-5 border rounded-3 text-center">
-      <h1 class="site-title text-white bg-danger">Fleur Crayon</h1>
-      <h4 class="site-caption">
-        好きな文房具<br>
-        オススメの文房具を<br>
-        共有しよう！</h4>
-    </div>
-    <div class="col-5 border">
+    <%= render 'public/homes/about' %>
+    <div class="col-md-5 col-sm-10 card rounded-5 bg-white mx-auto">
+      <div class="card-body">
       <%= form_with model: @admin, url: admin_session_path do |f| %>
-      <div class="sign-form border">
         <h5 class="border-bottom">管理者ログイン</h5>
 
         <div class="field">
           <label for="inputEmail">メールアドレス</label><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"inputEmail" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"inputEmail", class:"col-md-10" %>
         </div>
 
-        <div class="field">
+        <div class="field mt-2">
           <label for="inputPassword">パスワード</label><br />
-          <%= f.password_field :password, autocomplete: "current-password", id:"inputPassword" %>
+          <%= f.password_field :password, autocomplete: "current-password", id:"inputPassword", class:"col-md-10" %>
         </div>
-        <div class="actions">
+        <div class="btn mt-3">
           <%= f.submit "ログイン", class:"btn btn-primary" %>
-          <%= link_to'ログアウト', destroy_admin_session_path, method: :delete %>
         </div>
       <% end %>
-      <%= render "admin/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
