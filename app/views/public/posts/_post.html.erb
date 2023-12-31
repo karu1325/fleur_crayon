@@ -8,9 +8,15 @@
     <%= image_tag post.get_image(200,200) %>
   </div>
   <div class="col-md-6 col-sm-10">
-    <p class="card-text">
-      <%= truncate(post.caption, :length => 50) %>
-    </p>
+    <% if params[:action] == "show" %>
+      <p class="card-text">
+        <%= post.caption %>
+      </p>
+    <% else %>
+      <p class="card-text">
+        <%= truncate(post.caption, :length => 50) %>
+      </p>
+    <% end %>
     <div class="card-tag pt-3">
       <% post.tags.each do |tag| %>
         <%= link_to tag_search_path(tag_id: tag.id), class:"text-decoration-none" do %>

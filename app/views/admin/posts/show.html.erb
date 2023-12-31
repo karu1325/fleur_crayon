@@ -1,57 +1,67 @@
-<div class="container">
-  <div class="row">
-    <h5 class="title">投稿詳細</h5>
-    <h5 class="comment">コメント<%= @post.post_comments.count %>件</h5>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-4 col-sm-5 text-center mx-5"><strong>投稿詳細</strong></h3>
+    <h5 class="comment col-md-4 col-sm-7 my-auto text-center">コメント<%= @post.post_comments.count %>件</h5>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'admin/homes/admin_side' %>
     </div>
-    <div class="col-8">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-user row">
-            <%= link_to admin_user_path(@post) do %>
-              <%= image_tag @post.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
-              <%= @post.user.name %>
+
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-md-11 col-sm-9 mx-auto">
+        <div class="card mb-4 p-2">
+          <div class="card-body ml-3">
+          <%= link_to admin_user_path(@post), class:"text-decoration-none" do %>
+            <h5 class="card-user row align-items-center">
+              <div class="mr-2">
+                <%= image_tag @post.user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
+              </div>
+              <div class="mr-4">
+                <%= @post.user.name %>
+              </div>
+              <div class="ml-auto">
+                <%= @post.created_at.strftime("%Y/%m/%d") %>
+            </h5>
+          <% end %>
+            <div class="row">
+              <h5 class="card-title">
+                <%= @post.name %> / <%= @post.campany %>
+              </h5>
+            </div>
+            <div class="row">
+              <div class="card-image">
+                <%= image_tag @post.get_image(200,200) %>
+              </div>
+              <div class="col-md-6 col-sm-10">
+                <p class="card-text">
+                  <%= @post.caption %>
+                </p>
+                <div class="card-tag pt-3">
+                  <%= @post.tags.map(&:tag_name).join(' ') %>
+                </div>
+                <div class="option-btn row">
+                  <div class="favorite_count m-2">
+                    ♡<%= @post.favorites.count %>いいね
+                  </div>
+                  <div class="bookmark_count m-2">
+                    <span><i class="far fa-bookmark"></i></span><%= @post.bookmarks.count %>ブックマーク
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% @post.post_comments.each do |post_comment| %>
+        <div class="card mb-3 p-2">
+          <div class="card-body ml-3">
+            <%= link_to admin_user_path(post_comment.user), class:"text-decoration-none" do %>
+              <%= render"public/post_comments/post_comment", post_comment: post_comment %>
             <% end %>
-            <%= @post.created_at.strftime("%Y/%m/%d") %>
           </div>
-          <div class="row">
-            <div class="card-title">
-              <%= @post.name %> / <%= @post.campany %>
-            </div>
-          </div>
-          <div class="card-image">
-            <%= image_tag @post.get_image(200,200) %>
-          </div>
-          <p class="card-text">
-            <%= @post.caption %>
-          </p>
-          <div class="card-tag">
-            <%= @post.tags.map(&:tag_name).join(' ') %>
-          </div>
-          <% if current_user != @post.user %>
-          <div class="option-btn row">
-            <div class="favorite_count">
-              <%= @post.favorites.count %>いいね
-            </div>
-            <div class="bookmark_count">
-              <%= @post.bookmarks.count %>ブックマーク
-            </div>
-          </div>
-          <% end %>
         </div>
+      <% end %>
       </div>
-    <% @post.post_comments.each do |post_comment| %>
-      <div class="card">
-        <div class="card-body">
-          <%= link_to admin_user_path(post_comment.user) do %>
-            <%= render"public/post_comments/post_comment", post_comment: post_comment %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
     </div>
   </div>
 </div>

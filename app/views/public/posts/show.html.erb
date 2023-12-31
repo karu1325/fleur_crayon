@@ -1,6 +1,7 @@
 <div class="container-fluid">
   <div class="row my-2">
-    <h5 class="comment col-md-4 offset-md-3 col-sm-7 my-auto text-center">コメント<%= @post.post_comments.count %>件</h5>
+    <h3 class="col-md-3 col-sm-5 text-center mx-5"><strong>投稿詳細</strong></h3>
+    <h5 class="comment col-md-4 col-sm-7 my-auto text-center">コメント<%= @post.post_comments.count %>件</h5>
     <% if @post.user.id == current_user.id %>
     <div class="col-md-2 col-sm-2 ml-auto">
       <%= link_to'編集する', edit_post_path(@post), class:'btn btn-success' %>
@@ -10,6 +11,7 @@
       <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     </div>
   </div>
+  
   <div class="row justify-content-center">
     <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
