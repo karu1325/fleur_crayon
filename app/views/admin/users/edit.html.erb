@@ -1,49 +1,65 @@
-<div class="container">
-  <div class="row">
-    <div class="title">ユーザー編集</div>
+<div class="container-fluid">
+  <div class="row my-2">
+    <h3 class="col-md-4 col-sm-7 text-center mx-5"><strong>ユーザー編集</strong></h3>
   </div>
-  <div class="row">
-    <div class="col-3">
+
+  <div class="row justify-content-center">
+    <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'admin/homes/admin_side' %>
     </div>
-    <div class="col-8">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle profile-icon' %>
-            <%= @user.created_at.strftime("%Y/%m/%d") %>
-          </div>
-          <div class="row">
-            <div class="col-3">ユーザーID</div>
-            <div class="col-4"><%= @user.id %></div>
-          </div>
-          <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
-            <div class="form-group row">
-              <label for="inputName" class="col-3 col-form-label">ユーザー名</label>
-              <div class="col-4">
-                <%= f.text_field :name, class:"form-control", id:"inputName" %>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputEmail" class="col-3 col-form-label">メーカー</label>
-              <div class="col-4">
-                <%= f.email_field :campany, class:"form-control", id:"inputCampany" %>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="inputStatus" class="col-3 col-form-label">会員ステータス</label>
-              <div class="col-4">
-                <%= f.radio_button :is_active, true, id:'inputStatusTrue' %>
-                <label for="inputStatusTrue" class="col-form-label">有効</label>
-                <%= f.radio_button :is_active, false, id:'inputStatusFalse' %>
-                <label for="inputStatusFalse" class="col-form-label">退会</label>
-              </div>
-            </div>
 
-            <div class="col-3 justify-content-center">
-              <%= f.submit'変更を保存', class:"btn btn-success" %>
+    <div class="bg-light border col-md-6 col-sm-10 pt-3 mb-3">
+      <div class="col-11 mx-auto">
+        <div class="card mb-4 p-2">
+          <div class="card-body mx-3">
+            <div class="row my-3 align-items-center">
+              <div class="ml-2">
+                <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle profile-icon', size:'80x80' %>
+              </div>
+              <div class="ml-auto">
+                <strong><%= @user.created_at.strftime("%Y/%m/%d") %></strong>
+              </div>
             </div>
-          <% end %>
+            <% if @user.errors.any? %>
+              <ul class="error-message">
+                <% @user.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            <% end %>
+
+            <div class="row">
+              <div class="col-md-5 col-sm-9">ユーザーID</div>
+              <div class="col-md-5 col-sm-3"><%= @user.id %></div>
+            </div>
+            <%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
+              <div class="form-group row">
+                <label for="inputName" class="col-md-5 col-sm-9 col-form-label">ユーザー名</label>
+                <div class="col-md-6 col-sm-11">
+                  <%= f.text_field :name, class:"form-control", id:"inputName" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail" class="col-md-5 col-sm-9 col-form-label">メールアドレス</label>
+                <div class="col-md-6 col-sm-11">
+                  <%= f.email_field :email, class:"form-control", id:"inputEmail" %>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputStatus" class="col-md-5 col-sm-9 col-form-label">会員ステータス</label>
+                <div class="col-md-7 col-sm-11">
+                  <%= f.radio_button :is_active, true, id:'inputStatusTrue' %>
+                  <label for="inputStatusTrue" class="col-form-label">有効</label>
+                  <%= f.radio_button :is_active, false, id:'inputStatusFalse' %>
+                  <label for="inputStatusFalse" class="col-form-label">退会</label>
+                </div>
+              </div>
+
+              <div class="col-3 justify-content-center">
+                <%= f.submit'変更を保存', class:"btn btn-success" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

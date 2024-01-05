@@ -17,18 +17,18 @@
           <div class="card-body mx-3">
             <%= form_with model: @user do |f| %>
               <div class="row form-group my-4">
-                <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle', size:'80x80' %>
+                <%= image_tag @user.get_profile_image(100,100), class:'rounded-circle profile-icon', size:'80x80' %>
                 <div class="col">
-                  <label for="inputProfileImage" class="col-md-7">アイコン</label>
+                  <label for="inputProfileImage" class="col-md-7 col-form-label">アイコン</label>
                   <%= f.file_field :profile_image, accept:"image/*", class:"col-md-12", id:"inputProfileImage" %>
                 </div>
               </div>
               <div class="row form-group">
-                <label for="inputName" class="col-md-3">ユーザー名</label>
+                <label for="inputName" class="col-md-3 col-form-label">ユーザー名</label>
                 <%= f.text_field :name, class:"form-control col-md-7", id:"inputName" %>
               </div>
               <div class="row form-group">
-                <label for="inputEmail" class="col-md-3">メールアドレス</label>
+                <label for="inputEmail" class="col-md-3 col-form-label">メールアドレス</label>
                 <%= f.email_field :email, class:"form-control col-md-7", id:"inputEmail" %>
               </div>
               <div class="button">
