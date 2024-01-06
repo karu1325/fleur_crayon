@@ -24,12 +24,12 @@
                 </div>
               </div>
               <div class="row form-group">
-                <label for="inputName" class="col-md-3 col-form-label">ユーザー名</label>
-                <%= f.text_field :name, class:"form-control col-md-7", id:"inputName" %>
+                <label for="inputName" class="col-md-4 col-sm-7 col-form-label">ユーザー名</label>
+                <%= f.text_field :name, class:"form-control col-md-7 col-sm-10", id:"inputName" %>
               </div>
               <div class="row form-group">
-                <label for="inputEmail" class="col-md-3 col-form-label">メールアドレス</label>
-                <%= f.email_field :email, class:"form-control col-md-7", id:"inputEmail" %>
+                <label for="inputEmail" class="col-md-4 col-sm-7 col-form-label">メールアドレス</label>
+                <%= f.email_field :email, class:"form-control col-md-7 col-sm-10", id:"inputEmail" %>
               </div>
               <div class="button">
                 <%= f.submit'変更を保存', class:"btn btn-primary" %>

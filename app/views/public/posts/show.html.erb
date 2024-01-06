@@ -11,7 +11,7 @@
       <%= link_to'投稿する', new_post_path, class:'btn btn-primary' %>
     </div>
   </div>
-  
+
   <div class="row justify-content-center">
     <div class="col-md-3 col-sm-8 mx-5 mb-5 p-0">
       <%= render'public/users/public_side' %>
@@ -22,9 +22,9 @@
         <div class="card mb-4 p-2">
           <div class="card-body ml-3">
             <%= link_to user_path(@post.user.id), class:"text-decoration-none" do %>
-              <%= render'post_creater', post: @post %>
+              <%= render 'public/posts/post_creater', post: @post %>
             <% end %>
-            <%= render 'post', post: @post %>
+            <%= render 'public/posts/post', post: @post %>
           </div>
         </div>
       <% @post.post_comments.each do |post_comment| %>

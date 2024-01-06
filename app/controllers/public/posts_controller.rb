@@ -8,13 +8,13 @@ class Public::PostsController < ApplicationController
 
   def index
     if params[:latest]
-      @posts = Post.latest.page(params[:page]).per(10)
+      @posts = Post.where.not(user_id: User.where(is_active: false)).latest.page(params[:page]).per(10)
     elsif params[:old]
-      @posts = Post.old.page(params[:page]).per(10)
+      @posts = Post.where.not(user_id: User.where(is_active: false)).old.page(params[:page]).per(10)
     elsif params[:favorite_count]
-      @posts = Post.favorite_count.page(params[:page]).per(10)
+      @posts = Post.where.not(user_id: User.where(is_active: false)).favorite_count.page(params[:page]).per(10)
     else
-      @posts = Post.page(params[:page]).per(10)
+      @posts = Post.where.not(user_id: User.where(is_active: false)).page(params[:page]).per(10)
     end
     @tag_lists = Tag.all
   end
@@ -51,8 +51,8 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "投稿を編集しました"
       redirect_to post_path(@post.id)
     else
-      flash.now[:notice] = "必須項目を入力してください"
-      render:edit
+      flash.now[:alert] = "必須項目を入力してください"
+      render :edit
     end
   end
 
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to posts_path
+    redirect_to user_path(current_user.id)
   end
 
   def bookmarks

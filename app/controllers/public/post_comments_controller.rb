@@ -7,9 +7,17 @@ class Public::PostCommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     comment = current_user.post_comments.new(post_comment_params)
-    comment.post_id = post.id
-    comment.save
-    redirect_to post_path(post)
+    comment.post = post
+    if comment.save
+      flash[:notice] = "コメントを送信しました"
+      redirect_to post_path(post)
+    else
+      @post = post
+      @tag_lists = @post.tags
+      @post_comment = PostComment.new
+      flash.now[:alert] = "コメントに失敗しました。1文字以上入力してください"
+      render "public/posts/show"
+    end
   end
 
   def destroy

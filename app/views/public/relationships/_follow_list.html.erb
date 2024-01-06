@@ -1,7 +1,7 @@
 <% if users.exists? %>
   <% users.each do |user| %>
-    <div class="card mb-4 p-2">
-      <div class="card-body row ml-3 py-0">
+    <div class="card mb-4 p-4">
+      <div class="card-body ml-3 py-0">
         <%= link_to user_path(user.id), class:"text-decoration-none" do %>
           <h5 class="card-user row align-items-center">
             <div class="mr-2">
@@ -10,13 +10,18 @@
             <div class="mr-4">
               <%= user.name %>
             </div>
-            <div class="">
-              <strong><%= user.followings.count %></strong>フォロー
-              <strong><%= user.followers.count %></strong>フォロワー
+            <div class="ml-auto">
+              <%= user.created_at.strftime("%Y/%m/%d") %>
             </div>
           </h5>
         <% end %>
-        <div class="col-md-6 col-sm-5 text-right ml-auto my-auto">
+      </div>
+      <div class="card-info row py-0 align-items-center">
+        <div class="col-md-5 col-sm-4 text-center">
+          <strong><%= user.followings.count %></strong>フォロー
+          <strong><%= user.followers.count %></strong>フォロワー
+        </div>
+        <div class="col-md-5 col-sm-6 text-right ml-auto mr-2 my-auto">
           <%= render"follow_button", user: user %>
         </div>
       </div>
