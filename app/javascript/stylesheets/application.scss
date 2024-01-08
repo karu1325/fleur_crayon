@@ -1,5 +1,19 @@
 @use '~bootstrap/scss/bootstrap';
 
+@font-face{
+  font-family: 'dartsfont';
+  src: font-url('/assets/dartsfont.eot?#iefix') format('embedded-opentype'),
+       font-url('/assets/dartsfont.woff') format('woff'),
+       font-url('/assets/dartsfont.woff2') format('woff2'),
+       font-url('/assets/ダーツフォント.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  font-family: 'dartsfont', sans-serif;
+}
+
 .profile-icon{
   width: 60px;
   height: 60px;
@@ -8,6 +22,15 @@
 
 li{
   list-style: none;
+}
+
+.title{
+  font-family: 'Caveat', cursive;
+  font-size: 50px;
+}
+
+h1.title{
+  font-family: 'Caveat', cursive;
 }
 
 .main{

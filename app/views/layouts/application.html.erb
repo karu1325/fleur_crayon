@@ -9,6 +9,11 @@
     <script src="https://kit.fontawesome.com/09b1dd4dc3.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=New+Tegomin&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+
   </head>
 
   <body class="d-flex flex-column vh-100">
@@ -16,9 +21,9 @@
       <nav class="navbar navbar-expand-md navbar-light">
       <div class="container-fluid">
         <% if user_signed_in? %>
-          <a class="navbar-brand px-3" href="/posts">Fleur Crayon</a>
+          <a class="title navbar-brand px-3" href="/posts">Fleur Crayon</a>
         <% else %>
-          <a class="navbar-brand p-3">Fleur Crayon</a>
+          <a class="title navbar-brand p-3">Fleur Crayon</a>
         <% end %>
         <button class="navbar-toggler bg-white" type="button" data-toggle="collapse"
         data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -41,7 +46,7 @@
                 <%= form.submit "検索" %>
               <% end %>
               <%= form_with url: tag_search_path, method: :get do |form| %>
-                <%= form.collection_select :tag_search, Tag.all, :tag_name, :tag_name, options = { include_blank: "タグ選択", disabled: true }  %>
+                <%= form.collection_select :tag_search, Tag.all, :tag_name, :tag_name, options = {include_blank: "タグ選択", disabled: true} %>
                 <%= form.submit "タグ検索" %>
               <% end %>
             </li>
@@ -73,3 +78,5 @@
     </footer>
   </body>
 </html>
+<%#<select name="tag_search" id="tag_search"><option disabled value="">タグ選択</option>
+<option value="pen">pen</option>
