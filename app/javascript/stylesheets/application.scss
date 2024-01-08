@@ -53,3 +53,11 @@ footer{
   color: #930403;
   border: solid 1px #930403;
 }
+
+@media screen and (max-width:768px){
+
+  .card-top{
+  height: 100%;
+}
+
+}
