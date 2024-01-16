@@ -14,13 +14,12 @@ Admin.create!(
 cray = User.find_or_create_by!(email: "cray@sample.com") do |user|
   user.name = "Cray"
   user.password = "password1"
-  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
 end
 
 Post.find_or_create_by!(name: "ボールペン") do |post|
-  post.company = "uni"
+  post.campany = "uni"
   post.caption ="可愛い桜色の本体に使いやすい三色が入った、細くて書き込みに便利なボールペンです！"
-  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/app/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
-  post.tag_name = "ボールペン"
+  post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
   post.user = cray
 end
