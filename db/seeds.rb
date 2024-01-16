@@ -17,9 +17,15 @@ cray = User.find_or_create_by!(email: "cray@sample.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
 end
 
-Post.find_or_create_by!(name: "ボールペン") do |post|
+post1 = Post.find_or_create_by!(name: "ボールペン") do |post|
   post.campany = "uni"
   post.caption ="可愛い桜色の本体に使いやすい三色が入った、細くて書き込みに便利なボールペンです！"
   post.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
   post.user = cray
 end
+
+tag1 = Tag.create(tag_name: "ボールペン")
+tag2 = Tag.create(tag_name: "かわいい")
+
+post1.tags << tag1
+post1.tags << tag2
