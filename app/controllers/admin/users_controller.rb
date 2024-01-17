@@ -20,7 +20,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = "更新しました"
       redirect_to admin_user_path(@user.id)
     else
-      flash.now[:aleat] = "更新に失敗しました"
+      flash.now[:alert] = "更新に失敗しました"
       render :edit
     end
   end
