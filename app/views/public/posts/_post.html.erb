@@ -10,7 +10,7 @@
   <div class="col-md-6 col-sm-10">
     <% if params[:action] == "show" %>
       <p class="card-text">
-        <%= post.caption %>
+        <%= simple_format(post.caption, sanitize: true)%>
       </p>
     <% else %>
       <p class="card-text">
