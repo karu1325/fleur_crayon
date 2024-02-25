@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_user, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -72,6 +73,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:name, :campany, :caption, :image)
+  end
+
+  def ensure_user
+    posts = current_user.posts
+    post = posts.find_by(id: params[:id])
+    redirect_to posts_path unless post
   end
 
 end
