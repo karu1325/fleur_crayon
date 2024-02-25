@@ -1,6 +1,6 @@
 <div class="row form-group my-4">
   <label for="inputName" class="col-md-4 col-sm-5">商品名 (必須)</label>
-  <%= f.text_field :name, class:"form-control col-md-6", id:"inputName", placeholder:"商品名" %>
+  <%= f.text_field :name, class:"form-control col-md-6", id:"inputName", placeholder:"商品名(1~20文字)" %>
 </div>
 <div class="row form-group mb-4">
   <label for="inputCampany" class="col-md-4 col-sm-5">メーカー名</label>
@@ -12,7 +12,7 @@
 </div>
 <div class="row form-group mb-4">
   <label for="inputCaption" class="col-md-4 col-sm-5">投稿文 (必須)</label>
-  <%= f.text_area :caption, class:"form-control col-md-6", id:"inputCaption", placeholder:"オススメポイント・使ってみた感想など" %>
+  <%= f.text_area :caption, class:"form-control col-md-6", id:"inputCaption", placeholder:"オススメポイント・使ってみた感想など(1~300文字)" %>
 </div>
 <div class="row form-group mb-4">
   <label for="inputTagName" class="col-md-4 col-sm-5">タグ</label>

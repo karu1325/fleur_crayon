@@ -41,7 +41,7 @@
             <h5>コメント投稿</h5>
             <%= form_with model:[@post, @post_comment] do |f| %>
               <div class="form-label">
-                <%= f.text_area :comment, class:"form-control",rows:'3', placeholder:"コメント入力" %>
+                <%= f.text_area :comment, class:"form-control",rows:'3', placeholder:"コメント入力(1~500文字)" %>
               </div>
               <div class="text-right mt-2">
                 <%= f.submit"送信する", class:"btn btn-primary" %>
