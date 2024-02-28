@@ -15,7 +15,7 @@ class Public::PostCommentsController < ApplicationController
       @post = post
       @tag_lists = @post.tags
       @post_comment = PostComment.new
-      flash.now[:alert] = "コメントに失敗しました。1文字以上入力してください"
+      flash.now[:alert] = "コメントに失敗しました。1~500文字以内で入力してください"
       render "public/posts/show"
     end
   end
