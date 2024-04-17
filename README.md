@@ -29,9 +29,14 @@
 ​
 ## 設計書
 - 実装機能　https://docs.google.com/spreadsheets/d/1hrUzJeaiQCwc6JY-Up__ezLa6Jfrp5pD3t31xfEHbEg/edit?usp=sharing
+- ワイヤーフレーム　https://drive.google.com/file/d/1SbVSbbY9UQpoP4eltOJZP3vguespiGmn/view?usp=sharing
+- テーブル定義書　https://docs.google.com/spreadsheets/d/1YYz31auEngRcwCiZu6_P6XRtMIpL78WqzEm1Cqhywrg/edit?usp=sharing
+- ER図　https://drive.google.com/file/d/12Ns5Ky5hQbyzQs6kotGxOrw3CeKzbp8-/view?usp=sharing
+- 詳細設計　https://docs.google.com/spreadsheets/d/1X4Vx-Wvy56nXuDX4fTijw0XfgRpOlhbsmc-QV6186S4/edit?usp=sharing
+- テスト仕様書　https://docs.google.com/spreadsheets/d/1XlDqMEXdnL8v5IAxjLutZQN3HANl1tf8/edit?usp=sharing&ouid=102615204826079990622&rtpof=true&sd=true
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
