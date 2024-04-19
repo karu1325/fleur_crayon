@@ -29,7 +29,6 @@
 ​
 ## 設計書
 - 実装機能　https://docs.google.com/spreadsheets/d/1hrUzJeaiQCwc6JY-Up__ezLa6Jfrp5pD3t31xfEHbEg/edit?usp=sharing
-- ワイヤーフレーム　https://drive.google.com/file/d/1SbVSbbY9UQpoP4eltOJZP3vguespiGmn/view?usp=sharing
 - テーブル定義書　https://docs.google.com/spreadsheets/d/1YYz31auEngRcwCiZu6_P6XRtMIpL78WqzEm1Cqhywrg/edit?usp=sharing
 - ER図　https://drive.google.com/file/d/12Ns5Ky5hQbyzQs6kotGxOrw3CeKzbp8-/view?usp=sharing
 - 詳細設計　https://docs.google.com/spreadsheets/d/1X4Vx-Wvy56nXuDX4fTijw0XfgRpOlhbsmc-QV6186S4/edit?usp=sharing
